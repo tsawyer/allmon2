@@ -1,0 +1,8 @@
+<?php
+[System 500]
+node=500
+[System 501]
+node=501
+[System 502]
+node=502
+?>

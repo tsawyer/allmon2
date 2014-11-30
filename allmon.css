@@ -1,0 +1,237 @@
+.nodeNum {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.nodeNum:hover {
+	font-weight: bold;
+}
+
+#bubblechart {
+	font-size: 8px;
+}
+
+#header {
+    position:relative;
+    width:100%;
+    background-color: #82A505;
+    height:120px;
+}
+
+#headerTitle {
+    position: absolute;
+    top:20px;
+    left:10px;
+    margin: 0px 0px;
+    font-size: 2.5em;
+    line-height: normal;
+    letter-spacing: normal;
+    font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+#headerTag {
+    position:absolute;
+    top:70px;
+    left:10px;
+    margin: 0px 00px;
+    font-weight: normal;
+    font-size: 1.0em;
+    line-height: normal;
+    font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+    letter-spacing: normal;
+}
+
+#headerImg {
+    position:absolute;
+    top:10px;
+    right:5px;
+}
+
+#menu {
+/*  position:static;
+    height: 25px; */
+    float: left;
+    width: 100%;
+    background-color: #446600;
+    color: #ffff99;
+    font-size:12px;
+    font-family:Verdana,Arial,sans-serif;
+}
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    z-index: 5;
+}
+
+#menu li {
+	position: relative;
+	display: inline;
+	float: left;
+}
+
+#menu a {
+	display: block;
+	padding: 5px 12px 5px;
+	text-decoration: none;
+    color: #ffff99;
+}
+
+#menu a:hover {
+	background: transparent;
+	color:white;
+}
+
+#menu a:active {
+}
+
+#menu a.active {
+    color:white;
+}
+
+#footer {
+    font-size:10px;
+}
+
+table.rtcm {
+   border-collapse:collapse;
+   border:1px solid black;
+   font-family:verdana,arial,sans-serif;
+}
+table.rtcm tr {
+	font-size:12px;
+}
+
+table.rtcm td {
+	white-space:nowrap;
+}
+
+table.rtcm th {
+    border:1px solid black;
+	font-size:13px;
+	background-color: #dedede;
+}
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+
+table.gridtable th {
+	border-width: 1px;
+	padding: 4px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 4px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+
+table.gridtable tr.rColor td {
+      background-color: #8BA51A; color: white;
+}
+
+table.gridtable tr.cColor td {
+      background-color: #FF9900; color: white;
+}
+
+.disconnect {
+    font-size: 14px;
+    text-align: left;
+}
+
+.text {
+  position: relative;
+  margin: 0px 0px 0px 10px;
+  width: 330px;
+  font-size: 14px;
+  text-align: left;
+}
+.barbox_a {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  margin: 0px 0px 0px 0px;
+  width: 302px;
+  height: 22px;
+  background-color: black;
+}
+.bar {
+  position: relative;
+  top: 1px;
+  left: 1px;
+  margin: 0px 0px 0px 0px;
+  width: 0px;
+  height: 20px;
+  background-color: #0099FF;
+  text-align: center;
+  color: white;
+}
+
+.per {
+  position: absolute;
+  top: 0px;
+  font-size: 12px;
+  left: 50%;
+  height: 20px;
+  margin: 0px 0px 0px 0px;
+  background-color: #0099FF;
+  color: white;
+}
+
+.blank {
+  background-color: white;
+  width: 300px;
+}
+
+#login {
+    display: none;
+}
+
+#login-header {
+    margin: 0 auto;
+    position: absolute;
+    right: 250px;
+}
+#login-link {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    background: #2a2a2a;
+    padding: 5px 15px 5px 15px;
+    color: #FFF;
+}
+#login-panel {
+    position: absolute;
+    top: 26px;
+    right: 0px;
+    width: 200px;
+    padding: 10px 15px 5px 15px;
+    background: #2a2a2a;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #FFF;
+    display: none;
+}
+label {
+    line-height: 1.8;
+}
+
+.clearer {
+	clear: both;
+}
+
+#cpMain {
+    display: none;
+}
+
