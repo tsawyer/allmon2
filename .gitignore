@@ -1,4 +1,5 @@
 .htpasswd
+astdb.txt
 allmon.ini.php
 voter.ini.php
 controlpanel.ini.php

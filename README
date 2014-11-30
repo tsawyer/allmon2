@@ -44,7 +44,10 @@ Install instructions
  - Optionally copy voter.ini.txt to voter.ini.php and edit with your voter info.
  - Create your .htpasswd file for the admin user(s). In your web server
    directory, on the command line do: htpasswd -c .htpasswd username
- - Make sure you have the latest Allstar source from svn
+   Some systems will need the -d option to force crypr() encryption 
+   needed by php
+ - Make sure you have the latest Allstar source from svn as there are special
+   Allmon commands in later verions of rpt.c. 
  - Edit /etc/asterisk/manager.conf
  - Mark astdb.php executable and add to cron. Run just once a day please. ie
    01 03 * * * cd /var/www/html/allmon; ./astdb.php
@@ -58,10 +61,13 @@ Install instructions
 Allstar Database
  - If you don't have the Allstar "database" (really just a text file) the
    Node Information column will only show the IP address of the remote nodes.
- - The included database (astdb.txt) is likely old by the time you install.
-   It should be periodically updated with the astdb.php script. Please
-   set your cron job to a reasonable time, like once a day and manually
-   run when you need the occasional adhoc update.
+ - ACID and Limey users should run the astdb.php script to get an initial 
+   copy of the database. It should be periodically updated with the
+   astdb.php script. Please set your cron job to a reasonable time, like 
+   once a day and manually run when you need the occasional adhoc update.
+ - The Beagle Bone Black already has a daily updated astdb.txt file. BBB
+   users should add a symbolic link to that file with 
+   "ln -s /var/log/asterisk.astdb.txt astdb.txt".
 
 Known Bugs
  - If you have only a group and no individual nodes displayed (menu=yes)
@@ -100,4 +106,9 @@ Updates
     - Show "No Connections." when there aren't any.
     - astdb.php won't loop forever when file is not found
   - 2014/04/24 Added the Control Panel 
-    - See controlpanel.ini.php to set up. 
+    - See controlpanel.ini.txt to set up. 
+  - 2014/11/30 Bringing git repository up to date.
+    - Added astdb.txt changes to README
+	- Updated .ini.txt sample files.
+	- menu.php has a bit more flexibility.
+    - Better compatibility with private systems.
