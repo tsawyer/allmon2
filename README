@@ -108,7 +108,10 @@ Updates
   - 2014/04/24 Added the Control Panel 
     - See controlpanel.ini.txt to set up. 
   - 2014/11/30 Bringing git repository up to date.
-    - Added astdb.txt changes to README
-	- Updated .ini.txt sample files.
-	- menu.php has a bit more flexibility.
+    - Added astdb.txt changes to README. 
+    - astdb.txt is no longer distributed with Allmon for BBB 
+      compatibility. ACID/Limey users just run astdb.php as before.
+    - Updated .ini.txt sample files.
+    - menu.php has a bit more flexibility.
     - Better compatibility with private systems.
+    - Added more example control panel commands.
