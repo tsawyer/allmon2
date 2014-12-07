@@ -191,7 +191,9 @@ function getNode($fp, $node) {
         #var_dump($sawStatus);            
         #print "===== end =====\n</pre>\n";
     } else {
-        $message .= "Get node sawSta failed!";
+        #$message .= "Get node sawSta failed!";
+		# Xipar nodes have no SawStat
+		$sawStatus = array("Conn:",$node,0,-1,-1);
     }
     
     // Parse this $node. Retuns an array of currently connected nodes
