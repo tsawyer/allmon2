@@ -67,7 +67,7 @@ Allstar Database
    once a day and manually run when you need the occasional adhoc update.
  - The Beagle Bone Black already has a daily updated astdb.txt file. BBB
    users should add a symbolic link to that file with 
-   "ln -s /var/log/asterisk.astdb.txt astdb.txt".
+   "ln -s /var/log/asterisk/astdb.txt astdb.txt".
 
 Known Bugs
  - If you have only a group and no individual nodes displayed (menu=yes)
