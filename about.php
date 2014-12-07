@@ -26,7 +26,7 @@ The numbers are the relative signal strength indicator, RSSI. The value ranges f
 A value of zero means that no signal is being selected. 
 The color of the bars indicate the type of RTCM client as shown on the key below the voter display.
 </p>
-<p>Please feel free to <a href="https://github.com/tsawyer/allmon/tree/allmon2">download Allmon</a> for your own site. Enjoy!</p>
+<p>Please feel free to <a href="https://github.com/tsawyer/allmon2">download Allmon2</a> for your own site. Enjoy!</p>
 
 Version 2 changes:
 <ul>
@@ -35,6 +35,5 @@ Version 2 changes:
 <li>UI improvements. 
 <li>Groups are now handled with the nodes=x,x,x key/value in the node stanza of allmon.ini. Groups.ini is no longer used.
 <li>Voter display is a selected node rather than all nodes on the server.
-<li>Allmon2 is not on github yet.
 </ul>
 <?php include "footer.php"; ?>
