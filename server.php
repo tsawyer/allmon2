@@ -7,11 +7,11 @@ include('allmon.inc.php');
 
 // Sanity check: correct request?
 if (empty($_GET['nodes'])) {
-	$data['status'] = 'Unknown request!';
+    $data['status'] = 'Unknown request!';
     echo 'data: ' .  json_encode($data) . "\n\n";
-	ob_flush();
-	flush();
-	exit;
+    ob_flush();
+    flush();
+    exit;
 }
 
 // Read parameters passed to us
@@ -43,52 +43,52 @@ $config = parse_ini_file('allmon.ini.php', true);
 // Sanity check: Must only have nodes in our ini file
 $nodes = array();
 foreach($passedNodes as $i => $node) {
-	if (isset($config[$node])) {
-		$nodes[] = $node;
-	} else {
-		$data = array('node' => $node, 'status' => "Node $node is not in allmon ini file");
-		echo "event: nodes\n";
-		echo 'data: ' . json_encode($data) . "\n\n";
-		ob_flush();
-		flush();
-	}
+    if (isset($config[$node])) {
+        $nodes[] = $node;
+    } else {
+        $data = array('node' => $node, 'status' => "Node $node is not in allmon ini file");
+        echo "event: nodes\n";
+        echo 'data: ' . json_encode($data) . "\n\n";
+        ob_flush();
+        flush();
+    }
 }
 
 // Open a socket to each Asterisk Manager.
 $servers = array(); $fp = array();
 foreach($nodes as $node) {
-	$host = $config[$node]['host'];
-	
-	// Connect and login to each manager only once.
-	if (!array_key_exists($host, $servers)) {
-		// try to connect
-		// Show a nice message that we're attempting to connect
-		$data = array('host' => $host, 'node' => $node, 'status'=>'Connecting to Asterisk Manager...');
-		echo "event: connection\n";
-		echo 'data: ' . json_encode($data) . "\n\n";
-		ob_flush();
-		flush();
+    $host = $config[$node]['host'];
+    
+    // Connect and login to each manager only once.
+    if (!array_key_exists($host, $servers)) {
+        // try to connect
+        // Show a nice message that we're attempting to connect
+        $data = array('host' => $host, 'node' => $node, 'status'=>'Connecting to Asterisk Manager...');
+        echo "event: connection\n";
+        echo 'data: ' . json_encode($data) . "\n\n";
+        ob_flush();
+        flush();
 
-		$fp[$host] = connect($config[$node]['host']);
-		if ($fp[$host] === FALSE) {
-			$data = array('host' => $host, 'node' => $node, 'status' => 'Could not connect to Asterisk Manager.');
-			echo "event: connection\n";
-			echo 'data: ' . json_encode($data) . "\n\n";
-			ob_flush();
-			flush();
-		} else {
-			// try to login
-			if (FALSE !== login($fp[$host], $config[$node]['user'], $config[$node]['passwd'])) {
-				$servers[$host] = 'y';
-			} else {
-				$data = array('host' => $host, 'node' => $node, 'status' => 'Could not login to Asterisk Manager.');
-				echo "event: connection\n";
-				echo 'data: ' . json_encode($data) . "\n\n";
-				ob_flush();
-				flush();
-			}
-		}
-	}
+        $fp[$host] = connect($config[$node]['host']);
+        if ($fp[$host] === FALSE) {
+            $data = array('host' => $host, 'node' => $node, 'status' => 'Could not connect to Asterisk Manager.');
+            echo "event: connection\n";
+            echo 'data: ' . json_encode($data) . "\n\n";
+            ob_flush();
+            flush();
+        } else {
+            // try to login
+            if (FALSE !== login($fp[$host], $config[$node]['user'], $config[$node]['passwd'])) {
+                $servers[$host] = 'y';
+            } else {
+                $data = array('host' => $host, 'node' => $node, 'status' => 'Could not login to Asterisk Manager.');
+                echo "event: connection\n";
+                echo 'data: ' . json_encode($data) . "\n\n";
+                ob_flush();
+                flush();
+            }
+        }
+    }
 }
 #print_r($servers);
 
@@ -99,62 +99,62 @@ $nodeTime=array();
 $ticToc='';
 while(TRUE) {
     foreach ($nodes as $node) {
-		
-		// Is host of this node logged in?
-		if (isset($servers[$config[$node]['host']])) {
-			#print "Servers: " . $servers[$config[$node]['host']];
-		} else {
-			continue;
-			#die ("a host is not logged in");
-		}
-		
+        
+        // Is host of this node logged in?
+        if (isset($servers[$config[$node]['host']])) {
+            #print "Servers: " . $servers[$config[$node]['host']];
+        } else {
+            continue;
+            #die ("a host is not logged in");
+        }
+        
         $connectedNodes = getNode($fp[$config[$node]['host']], $node);
         $sortedConnectedNodes = sortNodes($connectedNodes);
 
         // Build array of time values
-    	$nodeTime[$node]['node']=$node;
+        $nodeTime[$node]['node']=$node;
         $nodeTime[$node]['info'] = getAstInfo($node);
         
         // Build array 
-    	$current[$node]['node']=$node;
+        $current[$node]['node']=$node;
         $current[$node]['info'] = getAstInfo($node);
         
         // Save remote nodes
         $current[$node]['remote_nodes'] = array(); $i=0;
         foreach ($sortedConnectedNodes as $remoteNode => $arr) {
-	        // Store remote nodes time values
-        	$nodeTime[$node]['remote_nodes'][$i]['elapsed'] = $arr['elapsed'];
-        	$nodeTime[$node]['remote_nodes'][$i]['last_keyed'] = $arr['last_keyed'];
-        	
-        	// Store remote nodes other than time values (&nbsp;). 
-        	// Array key of remote_nodes is not node number to prevent javascript (for in) sorting
-	        $current[$node]['remote_nodes'][$i]['node']=$arr['node'];
-	        $current[$node]['remote_nodes'][$i]['info']=$arr['info'];
-	        $current[$node]['remote_nodes'][$i]['link']=$arr['link'];
-	        $current[$node]['remote_nodes'][$i]['ip']=$arr['ip'];
-	        $current[$node]['remote_nodes'][$i]['direction']=$arr['direction'];
-	        $current[$node]['remote_nodes'][$i]['keyed']=$arr['keyed'];
-	        $current[$node]['remote_nodes'][$i]['mode']=$arr['mode'];
-        	$current[$node]['remote_nodes'][$i]['elapsed'] = '&nbsp;';
-        	$current[$node]['remote_nodes'][$i]['last_keyed'] = '&nbsp';
-	        
-	        $i++;
+            // Store remote nodes time values
+            $nodeTime[$node]['remote_nodes'][$i]['elapsed'] = $arr['elapsed'];
+            $nodeTime[$node]['remote_nodes'][$i]['last_keyed'] = $arr['last_keyed'];
+            
+            // Store remote nodes other than time values (&nbsp;). 
+            // Array key of remote_nodes is not node number to prevent javascript (for in) sorting
+            $current[$node]['remote_nodes'][$i]['node']=$arr['node'];
+            $current[$node]['remote_nodes'][$i]['info']=$arr['info'];
+            $current[$node]['remote_nodes'][$i]['link']=$arr['link'];
+            $current[$node]['remote_nodes'][$i]['ip']=$arr['ip'];
+            $current[$node]['remote_nodes'][$i]['direction']=$arr['direction'];
+            $current[$node]['remote_nodes'][$i]['keyed']=$arr['keyed'];
+            $current[$node]['remote_nodes'][$i]['mode']=$arr['mode'];
+            $current[$node]['remote_nodes'][$i]['elapsed'] = '&nbsp;';
+            $current[$node]['remote_nodes'][$i]['last_keyed'] = '&nbsp';
+            
+            $i++;
         }
         
     }
-	
-	// Send current nodes only when data changes
-	if ($current !== $saved ) {
-		$saved = $current;
-		echo "event: nodes\n";
-		echo 'data: ' . json_encode($current) . "\n\n";
-	}
-	
-	// Send times every cycle
-	echo "event: nodetimes\n";
-	echo 'data: ' . json_encode($nodeTime) . "\n\n";
-	
-	
+    
+    // Send current nodes only when data changes
+    if ($current !== $saved ) {
+        $saved = $current;
+        echo "event: nodes\n";
+        echo 'data: ' . json_encode($current) . "\n\n";
+    }
+    
+    // Send times every cycle
+    echo "event: nodetimes\n";
+    echo 'data: ' . json_encode($nodeTime) . "\n\n";
+    
+    
     #print "===== \$current =====\n";
     #print_r($current);            
     #print_r($nodeTime);            
@@ -169,9 +169,9 @@ exit;
 
 // Get status for this $node
 function getNode($fp, $node) {
-	$actionRand = mt_rand();    # Asterisk Manger Interface an actionID so we can find our own response
+    $actionRand = mt_rand();    # Asterisk Manger Interface an actionID so we can find our own response
     
-	$actionID = 'xstat' . $actionRand;
+    $actionID = 'xstat' . $actionRand;
     if ((fwrite($fp,"ACTION: RptStatus\r\nCOMMAND: XStat\r\nNODE: $node\r\nActionID: $actionID\r\n\r\n")) !== FALSE ) {
         // Get RptStatus
         $rptStatus = get_response($fp, $actionID);
@@ -179,11 +179,14 @@ function getNode($fp, $node) {
         #var_dump($rptStatus);            
         #print "===== end =====\n</pre>\n";
     } else {
-        $message .= "Get node XStat failed!";
+        $data['status'] = 'XStat() failed!';
+        echo 'data: ' .  json_encode($data) . "\n\n";
+        ob_flush();
+        flush();
     }
     
     // format of Conn lines: Node# isKeyed lastKeySecAgo lastUnkeySecAgo
-	$actionID = 'sawstat' . $actionRand;
+    $actionID = 'sawstat' . $actionRand;
     if ((fwrite($fp,"ACTION: RptStatus\r\nCOMMAND: SawStat\r\nNODE: $node\r\nActionID: $actionID\r\n\r\n")) !== FALSE ) {
         // Get RptStatus
         $sawStatus = get_response($fp, $actionID);
@@ -191,9 +194,10 @@ function getNode($fp, $node) {
         #var_dump($sawStatus);            
         #print "===== end =====\n</pre>\n";
     } else {
-        #$message .= "Get node sawSta failed!";
-		# Xipar nodes have no SawStat
-		$sawStatus = array("Conn:",$node,0,-1,-1);
+        $data['status'] = 'sawStat failed!';
+        echo 'data: ' .  json_encode($data) . "\n\n";
+        ob_flush();
+        flush();
     }
     
     // Parse this $node. Retuns an array of currently connected nodes
@@ -230,7 +234,7 @@ function sortNodes($nodes) {
     if (count($never_heard) > 0) {
         ksort($never_heard, SORT_NUMERIC);
         foreach($never_heard as $nodeNum => $row) {
-	        $arr[$nodeNum] = $row;
+            $arr[$nodeNum] = $row;
         }
     }
     
@@ -247,7 +251,7 @@ function sortNodes($nodes) {
             $nodes[$nodeNum]['last_keyed'] = "Never";
         }
 
-    	$sortedNodes[$nodeNum]=$nodes[$nodeNum];
+        $sortedNodes[$nodeNum]=$nodes[$nodeNum];
     }
     
     return ($sortedNodes);
