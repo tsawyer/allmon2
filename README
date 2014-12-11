@@ -29,12 +29,13 @@ Install instructions
    should be a piece of cake.
  - Apache and PHP need to be installed on your server. The Apache password
    utility htpasswd must be available if you want to install an administrator.
- - Allmon 2 requires PHP 5.2 or above. ACID users will have to update their 
-   yum repo to get a current enough php with 
+ - Allmon 2 requires PHP 5.2 or above. If you run Allmon or your ACID node or
+   your web server is RedHat 5 you will have to update your yum repo to get a
+   current enough php with 
    wget -q -O - http://www.atomicorp.com/installers/atomic | sh
    and then
    yum update php
-   That should pring you up to php 5.4 as ot this writing. Alternatively, 
+   That should pring you up to php 5.4 as of this writing. Alternatively, 
    the pecl json package may work but I’ve not tried it.
  - The web server can be local to your node or on a stand alone server. If you
    are concerned about performance of your node use a stand alone server. Also,
