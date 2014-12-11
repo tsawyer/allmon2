@@ -21,6 +21,7 @@ if (preg_match("/voter\.php\?node=(\d+)$/", $uri, $matches)) {
 <meta name="generator" content="By hand with a text editor">
 <meta name="description" content="Allstar node manager">
 <meta name="keywords" content="allstar monitor, app_rpt, asterisk">
+<meta name="robots" content="noindex, nofollow">
 <meta name="author" content="Tim Sawyer, WD6AWP">
 <link type="text/css" rel="stylesheet" href="allmon.css">
 <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/jquery-ui.css">
