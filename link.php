@@ -170,12 +170,18 @@ if (count($nodes) > 1) {
 <!-- Nodes table -->
 <div>
 <?php
+#print '<pre>'; print_r($nodes); print '</pre>';
 foreach($nodes as $node) {
-    $nodeURL = "http://stats.allstarlink.org/nodeinfo.cgi?node=$node";
-    $bubbleChart = "http://stats.allstarlink.org/getstatus.cgi?$node";
     $info = $astdb[$node][1] . ' ' . $astdb[$node][2] . ' ' . $astdb[$node][3];
-	$title = "Node <a href=\"$nodeURL\" target=\"_blank\">$node</a> - $info ";
-	$title .= "<a href=\"$bubbleChart\" target=\"_blank\" id=\"bubblechart\">Bubble Chart</a>";
+    if ($config[$node]['hideNodeURL']) {
+        $nodeURL = $node;
+        $title = "$node - $info";
+    } else {
+        $nodeURL = "http://stats.allstarlink.org/nodeinfo.cgi?node=$node";
+        $bubbleChart = "http://stats.allstarlink.org/getstatus.cgi?$node";
+    	$title = "Node <a href=\"$nodeURL\" target=\"_blank\">$node</a> - $info ";
+    	$title .= "<a href=\"$bubbleChart\" target=\"_blank\" id=\"bubblechart\">Bubble Chart</a>";
+    }
 ?>
 	<table class=gridtable id="table_<?php echo $node ?>">
 	<colgroup>
