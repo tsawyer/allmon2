@@ -48,8 +48,9 @@ if (file_exists('voter.ini.php')) {
     $arr = parse_ini_file('voter.ini.php', true);
 
     foreach($arr as $name => $data) {
+        #print "<pre>$name"; print_r($data); print "</pre>";
         $items[$i]['node'] = $name;
-        $items[$i]['url'] = "voter.php?node={$data['node']}";
+        @$items[$i]['url'] = "voter.php?node={$data['node']}";
         $i++;
     }
 }
