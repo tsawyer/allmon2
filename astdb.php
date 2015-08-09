@@ -1,25 +1,28 @@
 #! /usr/bin/php -q
 <?php
 
-// Get allstar database
+// Read AllStar database
 $url = "https://allstarlink.org/cgi-bin/allmondb.pl";
-$contents = '';
-$fh = fopen($url, 'r');
-if (!$fh) {
-    die('Failed to open URL.');
-}
-while (!feof($fh)) {
-  $contents .= fread($fh, 8192);
-}
-fclose($fh);
+$astArr = file($url);
 
-// Load private nodes if any
+// Read private nodes
 $privatefile = "privatenodes.txt";
+$privateArr = array();
 if (file_exists($privatefile)) {
-    $contents .= file_get_contents($privatefile);
+    $privateArr = file($privatefile);
 }
 
-// Save the data
+// Merge with private nodes
+if (!empty($privateArr)) {
+    $fileArr = array_merge($astArr, $privateArr);
+} else {
+    $fileArr = $astArr;
+}
+
+// Sort
+natsort($fileArr);
+
+// Output
 $db = "astdb.txt";
 if (! $fh = fopen($db, 'w')) {
     die("Cannot open $db.");
@@ -28,8 +31,11 @@ if (!flock($fh, LOCK_EX))  {
     echo 'Unable to obtain lock.';
     exit(-1); 
 }
-if (fwrite($fh, $contents) === FALSE) {
-    die ("Cannot write $db.");
+foreach($fileArr as $line) {
+    if (strlen(trim($line)) == 0) {
+        continue;
+    }
+    fwrite($fh, $line);
 }
 fclose($fh);
 ?>
