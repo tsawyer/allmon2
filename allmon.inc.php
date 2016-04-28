@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 // Reads output lines from Asterisk Manager
 function get_response($fp, $actionID) {
     while (TRUE) {

@@ -147,24 +147,28 @@ $(document).ready(function() {
 <!-- Connect form -->
 <div id="connect_form">
 <?php 
-if (count($nodes) > 1) {
-    print "<select id=\"localnode\">";
-    foreach ($nodes as $node) {
-        $info = $astdb[$node][1] . ' ' . $astdb[$node][2] . ' ' . $astdb[$node][3];
-        print "<option value=\"$node\">$node - $info</option>";
+if (count($nodes) > 0) {
+    if (count($nodes) > 1) {
+        print "<select id=\"localnode\">";
+        foreach ($nodes as $node) {
+            $info = $astdb[$node][1] . ' ' . $astdb[$node][2] . ' ' . $astdb[$node][3];
+            print "<option value=\"$node\">$node - $info</option>";
+        }
+        print "</select>\n";
+    } else {
+        print "<input type=\"hidden\" id=\"localnode\" value=\"{$nodes[0]}\">\n";
     }
-    print "</select>\n";
-} else {
-    print "<input type=\"hidden\" id=\"localnode\" value=\"{$nodes[0]}\">\n";
-}
 ?>
-    <input type="text" id="node">
-    Permanent <input type="checkbox"><br/>
-    <input type="button" value="Connect" id="connect">
-    <input type="button" value="Disconnect" id="disconnect">
-    <input type="button" value="Monitor" id="monitor">
-    <input type="button" value="Local Monitor" id="localmonitor">
-    <input type="button" value="Control Panel" id="controlpanel">
+<input type="text" id="node">
+Permanent <input type="checkbox"><br/>
+<input type="button" value="Connect" id="connect">
+<input type="button" value="Disconnect" id="disconnect">
+<input type="button" value="Monitor" id="monitor">
+<input type="button" value="Local Monitor" id="localmonitor">
+<input type="button" value="Control Panel" id="controlpanel">
+<?php
+} #endif (count($nodes) > 0)
+?>
 </div>
 
 <!-- Nodes table -->
