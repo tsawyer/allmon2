@@ -23,6 +23,8 @@ if (preg_match("/voter\.php\?node=(\d+)$/", $uri, $matches)) {
 <meta name="keywords" content="allstar monitor, app_rpt, asterisk">
 <meta name="robots" content="noindex, nofollow">
 <meta name="author" content="Tim Sawyer, WD6AWP">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 <link type="text/css" rel="stylesheet" href="allmon.css">
 <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/jquery-ui.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
