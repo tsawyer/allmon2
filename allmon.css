@@ -29,6 +29,16 @@
     font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
 }
 
+#headerTitle a:link {
+    text-decoration: none;
+    color: black;
+}
+
+#headerTitle a:visited {
+    color: black;
+    text-decoration: none;
+}
+
 #headerTag {
     position:absolute;
     top:70px;
@@ -47,27 +57,32 @@
     right:5px;
 }
 
+#headerLogin a:link {
+    text-decoration: none;
+    color: #ffff99;    
+}
+
+#headerLogin {
+    position:absolute;
+    top:95px;
+    left:30px;
+    font-size:12px;
+    font-family:Verdana,Arial,sans-serif;
+}
+
+#headerLogin a:visited {
+    text-decoration: none;
+    color: #ffff99;    
+}
+
 #menu {
 /*  position:static;
     height: 25px; */
     float: left;
     width: 100%;
     background-color: #446600;
-    color: #ffff99;
     font-size:12px;
     font-family:Verdana,Arial,sans-serif;
-}
-
-#menu ul {
-    list-style: none;
-    margin: 0;
-    z-index: 5;
-}
-
-#menu li {
-	position: relative;
-	display: inline;
-	float: left;
 }
 
 #menu a {
@@ -87,6 +102,57 @@
 
 #menu a.active {
     color:white;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #446600;
+    margin-left: 25px;
+}
+
+#menu li {
+    float: left;
+}
+
+#menu li a, .dropbtn {
+    display: inline-block;
+    /** color: white; **/
+    text-align: center;
+    /** padding: 14px 16px; **/
+    text-decoration: none;
+}
+
+#menu li.dropdown {
+    display: inline-block;
+}
+
+#menu .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #4E700A;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 5;
+}
+
+#menu .dropdown-content a {
+    color: #ffff99;
+    padding: 4px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+#menu .dropdown-content a:hover {
+    background-color: #587A14;
+	color:white;
+}
+
+#menu .dropdown:hover .dropdown-content {
+    display: block;
 }
 
 #footer {

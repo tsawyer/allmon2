@@ -12,6 +12,7 @@ if (preg_match("/voter\.php\?node=(\d+)$/", $uri, $matches)) {
 } elseif (preg_match("/about/", $uri, $matches)) {
     $pageTitle .= "" . ucfirst($matches[0]);
 }
+$home="/" . $var1[1];
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,8 +35,29 @@ if (preg_match("/voter\.php\?node=(\d+)$/", $uri, $matches)) {
 </head>
 <body>
 <div id="header">
-<div id="headerTitle">Allstar Monitor II</div>
-<div id="headerTag">Monitoring the World One Node at a Time</div>
+<div id="headerTitle"><a href="<?php echo $home ?>">Allstar Monitor II</a></div>
+<div id="headerTag">
+Monitoring the World One Node at a Time
+</div>
+<!-- Login opener -->
+<div id="headerLogin">
+<a href="#" id="loginlink">Login</a>
+<a href="#" id="logoutlink">Logout</a>
+</div>
 <div id="headerImg"><img src="allstarLogo.png" alt="Allstar Logo"></div>
 </div>
-<?php include "menu.php"; ?>
+<div class="clearer"></div>
+<!-- Login form -->
+<div id="login">
+<div>
+<form method="post" action="">
+<table>
+<tr><td>Username:</td><td><input style="width: 150px;" type="text" name="user" autocapitalize="none"></td></tr>
+<tr><td>Password:</td><td><input style="width: 150px;" type="password" name="password"></td></tr>
+</table>
+</form>
+</div>
+</div>
+<?php include "menu.php" ?>
+<!-- Command response area -->
+<div id="test_area"></div>
