@@ -122,3 +122,19 @@ Updates
     - Better compatibility with private systems.
     - Added more example control panel commands.
   - 2016/07/07 Added favicon. Thanks KC9ONA
+  - 2016/07/27 Taged version 2.1 - Changes Navbar to CSS Dropdown Style Menu
+    - !!!NOTICE!!! !!!WARNING!!! User changes are to allmon.ini.php are 
+       required to continue hiding hidden menus. Default behavior is to show
+       menus items unless hidden with the new INI directive nomenu=yes.
+    - Other than hidden menus, existing items should continue to function 
+       as before. 
+    - The INI [Break] stanza is no longer used. It's not needed in the 
+       dropdown context. 
+    - Bookmarks should work as before 2.1. A browser refresh may be required
+       (due to CSS cashing) to corectly display the menu the first time in.
+    - The login/logout link has moved above (and out of the way of) the Navbar. 
+    - New INI directive "system=<name>" creates and/or adds item to dropdown named. 
+       See sample allmon.ini.txt
+    - The about.php page has been deleted and it's text moved to the new home 
+       page. 
+    - The site title is now a link to the new home page. 
