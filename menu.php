@@ -42,15 +42,21 @@ foreach($config as $name => $data) {
         $systems[$sysName][$name]['url'] = "link.php?nodes=$name";
     }
 }
+//print '<pre>'; print_r($systems); print '</pre>';
 
 // Output menu 
 $outBuf = "<div id=\"menu\">\n";
 $outBuf .= "<ul>";
 foreach ($systems as $sysName => $items) {
     if ($sysName == "MainNavBar") {
-        $itemName = key($items);
-        $url =  $items[$itemName]['url'];
-        $outBuf .= "<li><a href=\"$url\">$itemName</a></li>\n";
+        // $itemName = key($items);
+        // $url =  $items[$itemName]['url'];
+        // $outBuf .= "<li><a href=\"$url\">$itemName</a></li>\n";
+        $outBuf .= "<li>";
+        foreach($items as $itemName => $itemValue) {
+            $outBuf .= "  <a href=\"" . $itemValue['url'] .  "\">$itemName</a>";
+        }
+        $outBuf .= "</li>";
     } else {
         $outBuf .= "<li class=\"dropdown\">\n";
         $outBuf .= "<a href=\"#\" class=\"dropbtn\">$sysName</a>\n";
@@ -65,4 +71,6 @@ foreach ($systems as $sysName => $items) {
 $outBuf .= "</ul>\n</div>\n";
 $outBuf .= "<div class=\"clearer\"></div>";
 print $outBuf;
+
+//print '<pre>'; print_r($outBuf); print '</pre>';
 ?>
