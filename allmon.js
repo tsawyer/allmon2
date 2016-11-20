@@ -1,6 +1,14 @@
 // when DOM is ready
 $(document).ready(function() {
 
+    //Set to hide Login Link
+    hideLoginLink = true
+    
+    // Hide login link on page load?
+    if (hideLoginLink) {
+        $('#loginlink').hide();
+    }
+
     // Is user authenticated
     if ($.cookie('allmon_loggedin') == 'yes') {
         $('#loginlink').hide();
@@ -39,7 +47,9 @@ $(document).ready(function() {
     // Logout 
     $('#logoutlink').click(function(event) {
         $.cookie('allmon_loggedin', null, { path: '/' });
-        $('#loginlink').show();
+        if (! hideLoginLink) {
+            $('#loginlink').show();
+        }
         $('#logoutlink').hide();
         $('#connect_form').hide();
         event.preventDefault();
@@ -100,5 +110,18 @@ $(document).ready(function() {
           }  
     });
     
+    // Uncomment this block to allow shift+h to show login dialog.  
+    $(document).keypress(function(event) {
+        if (hideLoginLink) {
+            var checkWebkitandIE=(event.which==72 ? 1 : 0);
+            var checkMoz=(event.which==104 && event.shiftKey ? 1 : 0);
+
+            if ((checkWebkitandIE || checkMoz) && $.cookie('allmon_loggedin') != 'yes') {
+                $("#login").dialog('open');
+                return false;
+            }
+        }
+      
+    });
 
 });
