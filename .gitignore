@@ -5,3 +5,4 @@ controlpanel.ini.php
 privatenodes.txt
 temperature.php
 temperatureproxy.php
+.DS_Store
