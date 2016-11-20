@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
     //Set to hide Login Link
-    hideLoginLink = true
+    hideLoginLink = false
     
     // Hide login link on page load?
     if (hideLoginLink) {
