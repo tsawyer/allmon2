@@ -1,11 +1,10 @@
 <?php 
 include "header.php";
 
-$node = @trim(strip_tags($_GET['node']));
-$nodeURL = "http://stats.allstarlink.org/nodeinfo.cgi?node=$node";
+$passedNodes = explode(',', @trim(strip_tags($_GET['node'])));
 
 // If no node number use first non-voter in INI
-if (empty($node)) {
+if (empty($passedNodes[0])) {
     die ("Please provide voter node number. (ie voter.php?node=1234)");
 }
 ?>
@@ -19,18 +18,22 @@ if (empty($node)) {
     // when DOM is ready
     $(document).ready(function() {
 	    if(typeof(EventSource)!=="undefined") {
-	        var source=new EventSource("voterserver.php?node=<?php echo $node; ?>");
+<?php foreach ($passedNodes as $node) { ?>
+	        var source<?php echo $node; ?>=new EventSource("voterserver.php?node=<?php echo $node; ?>");
 	        //var source=new EventSource("sse_demo.php");
-	        source.onmessage=function(event) {
-	            $("#link_list").html(event.data);
+	        source<?php echo $node; ?>.onmessage=function(event) {
+	            $("#link_list_<?php echo $node; ?>").html(event.data);
 	        };
+<?php } ?>
 	    } else {
-	        $("list_link").html("Sorry, your browser does not support server-sent events...");
+	        $("list_link_<?php echo $passedNodes[0]; ?>").html("Sorry, your browser does not support server-sent events...");
 	    }
     });            
 </script>
 <br/>
-<div id="link_list">Loading voter...</div>
+<?php foreach ($passedNodes as $node) { ?>
+<div id="link_list_<?php echo $node; ?>">Loading voter...</div>
+<?php } ?>
 <div style='width:500px; text-align:left;'>
 The numbers indicate the relative signal strength. The value ranges from 0 to 255, a range of approximately 30db.
 A value of zero means that no signal is being received. The color of the bars indicate the type of RTCM client.
