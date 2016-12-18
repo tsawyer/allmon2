@@ -31,4 +31,7 @@ system=System2
 rtcmnode=2000
 [Grouped Nodes]
 nodes=500,501,2000
+[2 RTCMs]
+system=System2
+rtcmnode=2000,2001
 ?>

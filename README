@@ -1,5 +1,5 @@
 Allmon README
-Updated July 8, 2016
+Updated December 18, 2016
 
 Allmon is a web site for managing one or more app_rpt (aka Allstar) nodes.
 Each managed local node shows a list of connected nodes. The list is
@@ -138,3 +138,7 @@ Updates
     - The about.php page has been deleted and it's text moved to the new home 
        page. 
     - The site title is now a link to the new home page. 
+  - 2016/12/18
+    - Can show more than one RTCM at a time i.e. link.php?nodes=1111,1112
+        see example in allmon.ini.txt
+    - Fixed INI hideNodeURL=yes setting.
