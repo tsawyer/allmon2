@@ -176,8 +176,9 @@ Permanent <input type="checkbox"><br/>
 <?php
 #print '<pre>'; print_r($nodes); print '</pre>';
 foreach($nodes as $node) {
+    print '<pre>'; print_r($config[$node]); print '</pre>';
     $info = $astdb[$node][1] . ' ' . $astdb[$node][2] . ' ' . $astdb[$node][3];
-    if (isset($config[$node]['showNodeURL'])) {
+    if (isset($config[$node]['hideNodeURL']) and $config[$node]['hideNodeURL'] == 1) {
         $nodeURL = $node;
         $title = "$node - $info";
     } else {
