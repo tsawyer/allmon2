@@ -22,22 +22,38 @@ $(document).ready(function() {
         autoOpen: false,
         title: 'Manager Login',
         modal: true,
-        buttons: { "Login": function() {
-            var user = $('form input:text').val();
-            var passwd = $('input:password').val();
-            $(this).dialog("close"); 
-            $('#test_area').load("login.php", { 'user' : user, 'passwd' : passwd }, function(response) {
-                if (response.substr(0,5) != 'Sorry') {
-                    $('#connect_form').show();
-                    $('#logoutlink').show();
-                    $('#loginlink').hide();
-                    $.cookie('allmon_loggedin', 'yes', { expires: 7, path: '/' });
-                }
-            });
-            $('#test_area').stop().css('opacity', 1).fadeIn(50).delay(1000).fadeOut(2000);
-        } }
-    });
+       open: function() {
+           // On open, hide the original submit button
+           $( this ).find( "[type=submit]" ).hide();
+       },
+        buttons: [ { 
+           text: "OK",
+           type: "submit",
+           form: "login",
+           click: function() {
+               var user = $('form input:text').val();
+               var passwd = $('input:password').val();
+               $(this).dialog("close"); 
+               $('#test_area').load("login.php", { 'user' : user, 'passwd' : passwd }, function(response) {
+                   if (response.substr(0,5) != 'Sorry') {
+                       $('#connect_form').show();
+                       $('#logoutlink').show();
+                       $('#loginlink').hide();
+                       $.cookie('allmon_loggedin', 'yes', { expires: 7, path: '/' });
+                   }
+               });
+               $('#test_area').stop().css('opacity', 1).fadeIn(50).delay(1000).fadeOut(2000);
+           }
+        } ]
+     });
 
+     // make enter key submit login form
+     $('#login').on('keyup', function(e){
+       if (e.keyCode == 13) {
+         $(':button:contains("OK")').click();
+       }
+     });
+     
     // Login dialog opener
     $("#loginlink").click(function() {
         $("#login").dialog('open');
