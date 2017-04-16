@@ -50,7 +50,7 @@ function login($fp, $user, $password) {
 }
 
 function getAstInfo($nodeNum, $node=array()) {
-    global $astdb;
+    global $astdb, $echodb;
     #print '<pre>'; print_r($nodeNum); print '</pre>';
     
     // Build info string
@@ -59,7 +59,12 @@ function getAstInfo($nodeNum, $node=array()) {
         $dbNode = $astdb[$nodeNum];
         $info = $dbNode[1] . ' ' . $dbNode[2] . ' ' . $dbNode[3];
     } elseif ($nodeNum > 3000000) {
-        $info = "Echolink";
+        //$info = "Echolink";
+        // This is where we would extract info from the echonode file -- KK6OOS 07/20/2016
+        $echoNode = $nodeNum - 3000000;
+	$dbNode = $echodb[$echoNode];
+	$info = 'EchoLink User: '.$dbNode[1].' @ '. $dbNode[2];
+	// End KK6OOS
     } elseif (!empty($node['ip'])) {
         if (strlen(trim($node['ip'])) > 3) {
             $info = '(' . $node['ip'] . ')';
