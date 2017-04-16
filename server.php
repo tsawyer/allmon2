@@ -32,6 +32,21 @@ if (file_exists($db)) {
     fclose($fh);
 }
 
+// Get Echolink database file - KK6OOS 07/20/2016
+$db2 = "echonodes.txt";
+$echodb = array();
+if (file_exists($db2)) {
+   $fh = fopen($db2, "r");
+    if (flock($fh, LOCK_SH)){
+        while(($line = fgets($fh)) !== FALSE) {
+            $arr = preg_split("/\|/", trim($line));
+            $echodb[$arr[0]] = $arr;
+        }
+    }
+    flock($fh, LOCK_UN);
+    fclose($fh);
+}
+
 // Read allmon INI file
 if (!file_exists('allmon.ini.php')) {
     die("Couldn't load ini file.\n");
