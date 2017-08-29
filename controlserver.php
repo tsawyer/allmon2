@@ -1,6 +1,18 @@
 <?php
 include('allmon.inc.php');
 
+if (!isset($_COOKIE['allmon_loggedin'])) {
+	die('Unspecified failure!');
+}
+
+if (!isset($_GET['node'])) {
+	die('Unspecified failure!');
+}
+
+if (!isset($_GET['cmd'])) {
+	die ('Unspecified failure!');
+}
+
 #print_r($_GET);
 $node = @trim(strip_tags($_GET['node']));
 $cmd = @trim(strip_tags($_GET['cmd']));
