@@ -142,3 +142,5 @@ Updates
     - Can show more than one RTCM at a time i.e. link.php?nodes=1111,1112
         see example in allmon.ini.txt
     - Fixed INI hideNodeURL=yes setting.
+  - 2017/08/29
+    - Please see git comments for updates henceforth. 
