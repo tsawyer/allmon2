@@ -1,4 +1,5 @@
-<?php include "header.php"; ?>
+<?php include "session.inc"; ?>
+<?php include "header.inc"; ?>
 <p>
 Allmon is a web site for monitoring and managing ham radio 
 <a href="http://allstarlink.org" target="_blank">Allstar</a> and <a href="http://ohnosec.org/drupal/" target="_blank">app_rpt</a>
@@ -36,4 +37,4 @@ Version 2 changes:
 <li>Groups are now handled with the nodes=x,x,x key/value in the node stanza of allmon.ini. Groups.ini is no longer used.
 <li>Voter display is a selected node rather than all nodes on the server.
 </ul>
-<?php include "footer.php"; ?>
+<?php include "footer.inc"; ?>

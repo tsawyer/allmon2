@@ -1,5 +1,6 @@
 <?php 
-include "header.php";
+include "session.inc";
+include "header.inc";
 
 $passedNodes = explode(',', @trim(strip_tags($_GET['node'])));
 
@@ -43,4 +44,4 @@ A value of zero means that no signal is being received. The color of the bars in
 <div style='background-color: greenyellow; color: black; text-align: center;'>Green indicates the station is voted.</div>
 <div style='background-color: cyan; color: black; text-align: center;'>Cyan is a non-voting mix station. </div>
 </div>
-<?php include "footer.php"; ?>
+<?php include "footer.inc"; ?>

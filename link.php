@@ -1,6 +1,7 @@
 <?php 
+include "session.inc";
 error_reporting(E_ALL);
-include "header.php";
+include "header.inc";
 $parms = @trim(strip_tags($_GET['nodes']));
 $passedNodes = explode(',', @trim(strip_tags($_GET['nodes'])));
 #print_r($nodes);
@@ -151,7 +152,10 @@ if (count($nodes) > 0) {
     if (count($nodes) > 1) {
         print "<select id=\"localnode\">";
         foreach ($nodes as $node) {
-            $info = $astdb[$node][1] . ' ' . $astdb[$node][2] . ' ' . $astdb[$node][3];
+		if (isset($astdb[$node]))
+			$info = $astdb[$node][1] . ' ' . $astdb[$node][2] . ' ' . $astdb[$node][3];
+		else
+			$info = "Node not in database";
             print "<option value=\"$node\">$node - $info</option>";
         }
         print "</select>\n";
@@ -177,8 +181,11 @@ Permanent <input type="checkbox"><br/>
 #print '<pre>'; print_r($nodes); print '</pre>';
 foreach($nodes as $node) {
     #print '<pre>'; print_r($config[$node]); print '</pre>';
-    $info = $astdb[$node][1] . ' ' . $astdb[$node][2] . ' ' . $astdb[$node][3];
-    if (isset($config[$node]['hideNodeURL']) and $config[$node]['hideNodeURL'] == 1) {
+	if (isset($astdb[$node]))
+		$info = $astdb[$node][1] . ' ' . $astdb[$node][2] . ' ' . $astdb[$node][3];
+	else
+		$info = "Node not in database";
+    if (($info == "Node not in database" ) || (isset($config[$node]['hideNodeURL']) && $config[$node]['hideNodeURL'] == 1)) {
         $nodeURL = $node;
         $title = "$node - $info";
     } else {
@@ -212,4 +219,4 @@ foreach($nodes as $node) {
 </div>
 <div id="blinky">
 </div>
-<?php include "footer.php"; ?>
+<?php include "footer.inc"; ?>

@@ -1,5 +1,11 @@
 <?php
+include('session.inc');
 include('allmon.inc.php');
+
+if ($_SESSION['loggedin'] !== true) {
+	die("Please login to use connect/disconnect functions.\n");
+}
+
 
 // Filter and validate user input
 $remotenode = @trim(strip_tags($_POST['remotenode']));
@@ -22,12 +28,12 @@ $config = parse_ini_file('allmon.ini.php', true);
 #print "<pre>"; print_r($config); print "</pre>";
 
 // Open a socket to Asterisk Manager
-$fp = connect($config[$localnode]['host']);
+$fp = AMIconnect($config[$localnode]['host']);
 if (FALSE === $fp) {
-	die("Could not connect.\n\n");
+	die("Could not connect to Asterisk Manager.\n\n");
 }
-if (FALSE === login($fp, $config[$localnode]['user'], $config[$localnode]['passwd'])) {
-	die("Could not login.");
+if (FALSE === AMIlogin($fp, $config[$localnode]['user'], $config[$localnode]['passwd'])) {
+	die("Could not login to Asterisk Manager.");
 }
 
 // Which ilink command?

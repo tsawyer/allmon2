@@ -21,7 +21,7 @@ function get_response($fp, $actionID) {
     }
 }
 
-function connect($host) {
+function AMIconnect($host) {
     // Set default port if not provided
     $arr = explode(":", $host);
     $ip = $arr[0];
@@ -37,7 +37,7 @@ function connect($host) {
     return ($fp);
 }
 
-function login($fp, $user, $password) {
+function AMIlogin($fp, $user, $password) {
     // Login
 	$actionID = $user . $password;
     fwrite($fp,"ACTION: LOGIN\r\nUSERNAME: $user\r\nSECRET: $password\r\nEVENTS: 0\r\nActionID: $actionID\r\n\r\n");

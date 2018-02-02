@@ -1,4 +1,5 @@
-<?php include "header.php"; ?>
+<?php include "session.inc"; ?>
+<?php include "header.inc"; ?>
 <p>
 Allmon is a web site for monitoring and managing ham radio 
 <a href="http://allstarlink.org" target="_blank">Allstar</a> and <a href="http://ohnosec.org/drupal/" target="_blank">app_rpt</a>
@@ -59,4 +60,4 @@ Version 2.1:
     <li>A click on the page title will fetch the Allmon index page.</li> 
     <li>The about page text has been moved to the index page.</li>
 </ul>
-<?php include "footer.php"; ?>
+<?php include "footer.inc"; ?>

@@ -46,12 +46,12 @@ $config = parse_ini_file('allmon.ini.php', true);
 echo "data: Connecting...\n\n";
 ob_flush();
 flush();
-$fp = connect($config[$node]['host']);
+$fp = AMIconnect($config[$node]['host']);
 if (FALSE === $fp) {
-	die("Could not connect.\n\n");
+	die("Could not connect to Asterisk Manager.\n\n");
 }
-if (FALSE === login($fp, $config[$node]['user'], $config[$node]['passwd'])) {
-	die("Could not login.");
+if (FALSE === AMIlogin($fp, $config[$node]['user'], $config[$node]['passwd'])) {
+	die("Could not login to Asterisk Manager.");
 }
 #print "data: Connected and logged in.\n\n";
 #ob_flush();

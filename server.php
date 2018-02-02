@@ -69,7 +69,7 @@ foreach($nodes as $node) {
         ob_flush();
         flush();
 
-        $fp[$host] = connect($config[$node]['host']);
+        $fp[$host] = AMIconnect($config[$node]['host']);
         if ($fp[$host] === FALSE) {
             $data = array('host' => $host, 'node' => $node, 'status' => 'Could not connect to Asterisk Manager.');
             echo "event: connection\n";
@@ -78,7 +78,7 @@ foreach($nodes as $node) {
             flush();
         } else {
             // try to login
-            if (FALSE !== login($fp[$host], $config[$node]['user'], $config[$node]['passwd'])) {
+            if (FALSE !== AMIlogin($fp[$host], $config[$node]['user'], $config[$node]['passwd'])) {
                 $servers[$host] = 'y';
             } else {
                 $data = array('host' => $host, 'node' => $node, 'status' => 'Could not login to Asterisk Manager.');

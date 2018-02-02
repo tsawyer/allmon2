@@ -1,8 +1,9 @@
 <?php
+include('session.inc');
 include('allmon.inc.php');
 
-if (!isset($_COOKIE['allmon_loggedin'])) {
-	die('Unspecified failure!');
+if ($_SESSION['loggedin'] !== true) {
+        die("Please login to to user the Control Panel.\n");
 }
 
 if (!isset($_GET['node'])) {
@@ -29,14 +30,14 @@ if (!isset($config[$node])) {
 }
 
 // Set up connection
-$fp = connect($config[$node]['host']);
+$fp = AMIconnect($config[$node]['host']);
 if (FALSE === $fp) {
-    die("Could not connect to host.");
+    die("Could not connect to Asterisk Manager.");
 }
 
 // Login 
-if (FALSE === login($fp, $config[$node]['user'], $config[$node]['passwd'])) {
-    die("Could not login.");
+if (FALSE === AMIlogin($fp, $config[$node]['user'], $config[$node]['passwd'])) {
+    die("Could not login to Asterisk Manager.");
 }
 
 // Substitute node number

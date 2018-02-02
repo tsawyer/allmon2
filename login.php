@@ -3,12 +3,12 @@
 //	Updated password management so that bcrypt, etc., works.
 //	And, allow arbitrarily complex passwords. kb4fxc 2017-03-19
 //
+include ("session.inc");
+$_SESSION['loggedin'] = false;
 
-session_start();
 if (http_authenticate($_POST['user'], $_POST['passwd'])) {
     print "Login succeeded.";
     $_SESSION['loggedin'] = true;
-    //print "<meta http-equiv=\"REFRESH\" content=\"0;url=/supermon/\">";
 } else {
     print "Sorry, login failed.";
 }

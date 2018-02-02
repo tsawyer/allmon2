@@ -1,4 +1,5 @@
 <?php
+include ("session.inc");
 $node = @trim(strip_tags($_GET['node']));
 if (!is_numeric($node)) {
     die ("Please provide a properly formated URI. (ie controlpanel.php?node=1234)");
@@ -6,7 +7,7 @@ if (!is_numeric($node)) {
 
 $title = "Allmon Node $node Control Panel";
     
-if ($_COOKIE['allmon_loggedin'] == 'yes') {
+if ($_SESSION['loggedin'] === true) {
     // Read allmon INI file
     if (!file_exists('allmon.ini.php')) {
         die("Couldn't load file allmon.ini.php.\n");
@@ -48,20 +49,23 @@ if ($_COOKIE['allmon_loggedin'] == 'yes') {
 <meta name="keywords" content="allstar monitor, app_rpt, asterisk">
 <meta name="author" content="Tim Sawyer, WD6AWP">
 <link type="text/css" rel="stylesheet" href="allmon.css">
-<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/jquery-ui.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script type="text/javascript" src="jquery.cookie.js"></script>
+<link type="text/css" rel="stylesheet" href="jquery-ui.css">
+<script src="jquery.min.js"></script>
+<script src="jquery-ui.min.js"></script>
 <script>
 $(document).ready(function() {
     // Is user authenticated
-    if ($.cookie('allmon_loggedin') != 'yes') {
+
+<?php if ($_SESSION['loggedin'] !== true) { ?>
+
         alert ('Must login to use the Control Panel.');
-    } else {
+
+<?php }	else { ?>
+
         // css hides 
         $("#cpMain").show();
-    }
-    
+
+<?php }	?>
     // When Ok is clicked
     $('#cpExecute').click(function() {
         var localNode = $('#localnode').val();
@@ -96,4 +100,4 @@ for($i=0; $i < count($cpCommands['labels']); $i++) {
     <!-- Results shown here -->
 </div>
 </div>
-<?php include "footer.php"; ?>
+<?php include "footer.inc"; ?>
