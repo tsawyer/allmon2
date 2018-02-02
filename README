@@ -1,5 +1,5 @@
 Allmon README
-Updated December 18, 2016
+Updated Feburary 2, 2018
 
 Allmon is a web site for managing one or more app_rpt (aka Allstar) nodes.
 Each managed local node shows a list of connected nodes. The list is
@@ -143,4 +143,8 @@ Updates
         see example in allmon.ini.txt
     - Fixed INI hideNodeURL=yes setting.
   - 2017/08/29
-    - Please see git comments for updates henceforth. 
+    - Please see git comments for updates henceforth.
+  - 2018/02/02
+    - Security update. PHP session replaces login cookies.
+    - menu= works again and nomenu= still works.
+    - Thanks to KB4FXC, M0NFI, KN2R & WA3DSP
