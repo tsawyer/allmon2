@@ -146,5 +146,5 @@ Updates
     - Please see git comments for updates henceforth.
   - 2018/02/02
     - Security update. PHP session replaces login cookies.
-    - menu= works again and nomenu= still works.
+    - See release notes from 2016/07/27 regarding nomenu=
     - Thanks to KB4FXC, M0NFI, KN2R & WA3DSP
