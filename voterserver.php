@@ -2,6 +2,7 @@
 #error_reporting(E_ALL);
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
+header('X-Accel-Buffering: no');
 date_default_timezone_set('America/Los_Angeles');
 #print date("Y-m-d H:i:s") . "<br/>\n";
 #print microtime() . "<br/>New voter app under development.<br/>\n";
