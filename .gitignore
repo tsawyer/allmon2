@@ -1,4 +1,5 @@
 .htpasswd
+.htaccess
 astdb.txt
 allmon.ini.php
 controlpanel.ini.php
