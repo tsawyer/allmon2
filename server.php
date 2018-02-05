@@ -2,6 +2,7 @@
 #error_reporting(E_ALL);
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
+header('X-Accel-Buffering: no');
 date_default_timezone_set('America/Los_Angeles');
 include('allmon.inc.php');
 
