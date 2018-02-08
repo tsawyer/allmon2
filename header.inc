@@ -31,7 +31,7 @@ if (!empty($var1[1])) {
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link type="text/css" rel="stylesheet" href="allmon.css">
 <link type="text/css" rel="stylesheet" href="jquery-ui.css">
-<script src="jquery.min.js"></script>
+<script src="jquery-3.3.1.min.js"></script>
 <script src="jquery-ui.min.js"></script>
 <script type="text/javascript">
 // Was allmon.js
