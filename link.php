@@ -142,6 +142,8 @@ $(document).ready(function() {
     } else {
         $("#list_link").html("Sorry, your browser does not support server-sent events...");
     }
+	
+	$("#zoomImage").zoom({ url: "http://stats.allstarlink.org/getstatus.cgi?49973" });
 });
 </script>
 
@@ -202,8 +204,12 @@ foreach($nodes as $node) {
         $nodeURL = "http://stats.allstarlink.org/nodeinfo.cgi?node=$node";
         $bubbleChart = "http://stats.allstarlink.org/getstatus.cgi?$node";
     	$title = "Node $node - $info ";
-    	$title .= "<div class=\"btn-group float-right\"><a href=\"$bubbleChart\" class=\"btn btn-info\" target=\"_blank\" id=\"bubblechart\">Bubble Chart</a>";
-		$title .= "<a href=\"$nodeURL\" class=\"btn btn-info\" target=\"_blank\">Node Info</a></div>";
+    	$title .= "<div class=\"btn-group float-right\">";
+		$title .= "<a href=\"$nodeURL\" class=\"btn btn-info\" target=\"_blank\">Node Info</a>";
+		$title .= "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#nodeBubbleModal_$node\">Bubble Chart</button>";
+		$title .= "</div>";
+		
+		
     }
 ?>
 
@@ -219,11 +225,37 @@ foreach($nodes as $node) {
 	</tbody>
 	</table>
 	</div>
+	<div class="modal fade" id="nodeBubbleModal_<?php echo $node ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Node <?php echo $node ?> Map</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <a href="<?php echo $bubbleChart ?>" id="zoomImage" target="_blank" ><img src="<?php echo $bubbleChart ?>" class="img-fluid" /></a>
+
+	  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
 
 <?php
 }
 ?>
 </div>
+
+<!-- Modal -->
+
+
 <div id="blinky">
 </div>
 <?php include "footer.inc"; ?>
