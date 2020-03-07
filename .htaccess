@@ -1,0 +1,9 @@
+# Uncomment the next 3 lines to force https. Be sure to edit the 3rd line.  
+#RewriteEngine On
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://wd6awp.net/allmon/$1 [R,L]
+
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
