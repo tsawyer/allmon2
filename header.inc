@@ -1,4 +1,6 @@
 <?php
+$site_title = "KDØIOE Allstar";
+
 // Set title
 $var1 = explode('/', $_SERVER['REQUEST_URI']);
 $var2 = array_pop($var1);
@@ -225,7 +227,7 @@ $(document).ready(function() {
 <body>
 <div class="container">
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-<a class="navbar-brand" href="<?php echo $home ?>">KDØIOE Allstar</a>
+<a class="navbar-brand" href="<?php echo $home ?>"><?php echo $site_title ?></a>
   
 
 <?php include "menu.inc" ?>
