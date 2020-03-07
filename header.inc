@@ -129,8 +129,10 @@ $(document).ready(function() {
 
 	// IOE - Login function
 	$("#loginForm").submit(function () {
+		event.preventDefault();
 		var user = $('form input:text').val();
                var passwd = $('input:password').val();
+			   $("#loginModal").modal('hide');
                //$(this).dialog("close"); 
                $('#test_area').load("login.php", { 'user' : user, 'passwd' : passwd }, function(response) {
                    if (response.substr(0,5) != 'Sorry') {
@@ -274,7 +276,7 @@ $(document).ready(function() {
 	</div>
 </div>
 </form>
-<?php include "menu.inc" ?>
+
 <!-- Command response area -->
 <div class="container">&nbsp;
 <div id="test_area"></div>

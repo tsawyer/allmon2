@@ -31,9 +31,11 @@ foreach($config as $name => $data) {
         $sysName=$data['system'];
     }
     
+	$systems[$sysName][$name]['target'] = "";
     // URL: Use 'url', 'rtcmnode', 'nodes', or name
     if (isset($data['url'])) {
         $systems[$sysName][$name]['url'] = $data['url'];
+		$systems[$sysName][$name]['target'] = "_blank";
     } elseif(isset($data['rtcmnode'])) {
         $systems[$sysName][$name]['url'] = "voter.php?node={$data['rtcmnode']}";
     } elseif (isset($data['nodes'])) {
@@ -54,7 +56,7 @@ foreach ($systems as $sysName => $items) {
         // $outBuf .= "<li><a href=\"$url\">$itemName</a></li>\n";
         //$outBuf .= "<li class=\"nav-item\">";
         foreach($items as $itemName => $itemValue) {
-            $outBuf .= "<li class=\"nav-item\">\n<a class=\"nav-link\" href=\"" . $itemValue['url'] .  "\">$itemName</a>\n</li>\n";
+            $outBuf .= "<li class=\"nav-item\">\n<a class=\"nav-link\" href=\"" . $itemValue['url'] .  "\" target=\"" . $itemValue['target'] . "\">$itemName</a>\n</li>\n";
         }
         //$outBuf .= "</li>";
     } else {
