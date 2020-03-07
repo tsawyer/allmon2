@@ -201,13 +201,14 @@ foreach($nodes as $node) {
     } else {
         $nodeURL = "http://stats.allstarlink.org/nodeinfo.cgi?node=$node";
         $bubbleChart = "http://stats.allstarlink.org/getstatus.cgi?$node";
-    	$title = "Node <a href=\"$nodeURL\" target=\"_blank\">$node</a> - $info ";
-    	$title .= "<a href=\"$bubbleChart\" target=\"_blank\" id=\"bubblechart\">Bubble Chart</a>";
+    	$title = "Node $node - $info ";
+    	$title .= "<div class=\"btn-group float-right\"><a href=\"$bubbleChart\" class=\"btn btn-info\" target=\"_blank\" id=\"bubblechart\">Bubble Chart</a>";
+		$title .= "<a href=\"$nodeURL\" class=\"btn btn-info\" target=\"_blank\">Node Info</a></div>";
     }
 ?>
 
 	<div class="table-responsive-lg">
-	<h4><?php echo $title; ?></h4>
+	<h3><?php echo $title; ?></h3>
 	<table class="table table-sm table-bordered table-hover" id="table_<?php echo $node ?>">
 	<thead>
 	<!--<tr style="font-size:20px"><th colspan="7"><?php echo $title; ?></th></tr>-->
