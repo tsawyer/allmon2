@@ -1,0 +1,37 @@
+<?php
+[Off-site Link]
+url=http://google.com
+[500]
+host=my.address.com:5038
+user=admin
+passwd=password2
+nomenu=yes
+hideNodeURL=yes
+[501]
+system=System1
+host=my.address.com:5038
+user=admin
+passwd=password2
+nomenu=yes
+hideNodeURL=yes
+[502]
+system=System1
+host=my.address.com:5038
+user=admin
+passwd=password2
+nomenu=yes
+hideNodeURL=yes
+[2000]
+system=System2
+host=my.address.com:5037
+user=admin
+passwd=password2
+[2000 RTCM]
+system=System2
+rtcmnode=2000
+[Grouped Nodes]
+nodes=500,501,2000
+[2 RTCMs]
+system=System2
+rtcmnode=2000,2001
+?>
