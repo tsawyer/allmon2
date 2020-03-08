@@ -229,7 +229,7 @@ foreach($nodes as $node) {
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Node <?php echo $node ?> Map</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Node <?php echo $node ?> Chart</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -239,7 +239,7 @@ foreach($nodes as $node) {
 
 	  </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <small>Click the chart to open in a new window.</small><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         
       </div>
     </div>
