@@ -11,6 +11,9 @@ Allmon2 modified to have Bootstrap 4 libraries. This is based on the great work 
 - Make all libraries offline
 - Enhance login mechanism
 - Add extra config file/modify existing config for site-wide settings (title, color prefs, etc)
+- ~~Change Control Panel display~~
+- Add voter formatting
+
 
 ## Setup
 
