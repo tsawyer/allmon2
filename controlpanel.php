@@ -48,12 +48,6 @@ if ($_SESSION['loggedin'] === true) {
 <meta name="description" content="Allmon Control Panel">
 <meta name="keywords" content="allstar monitor, app_rpt, asterisk">
 <meta name="author" content="Tim Sawyer, WD6AWP">
-<<<<<<< HEAD
-<link type="text/css" rel="stylesheet" href="allmon.css">
-<link type="text/css" rel="stylesheet" href="jquery-ui.css">
-<script src="jquery.min.js"></script>
-<script src="jquery-ui.min.js"></script>
-=======
 <!--<link type="text/css" rel="stylesheet" href="allmon.css">-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script
@@ -64,7 +58,6 @@ if ($_SESSION['loggedin'] === true) {
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
->>>>>>> master-holder
 <script>
 $(document).ready(function() {
     // Is user authenticated
@@ -93,28 +86,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-<div id="header">
-<div id="headerTitle">Allstar Monitor II</div>
-<div id="headerTag"><?php echo $title ?></div>
-<div id="headerImg"><img src="allstarLogo.png" alt="Allstar Logo"></div>
-</div>
-<div id="cpMain">
-Control (select one): <select name="cpSelection" id="cpSelect">
-<?php 
-for($i=0; $i < count($cpCommands['labels']); $i++) {
-    print "<option value=\"" . $cpCommands['cmds'][$i] . "\">" . $cpCommands['labels'][$i] . "</option>\n";
-}
-?>
-</select>
-<input type="hidden" id="localnode" value="<?php echo $node ?>">
-<input type="button" value="Ok" id="cpExecute">
-<br/>
-<div id="cpResult">
-    <!-- Results shown here -->
-</div>
-</div>
-=======
 
 <!--<div id="header">
 <div id="headerTitle">Allstar Monitor II</div>
@@ -160,5 +131,4 @@ for($i=0; $i < count($cpCommands['labels']); $i++) {
 </div>
 </div>
 
->>>>>>> master-holder
 <?php include "footer.inc"; ?>

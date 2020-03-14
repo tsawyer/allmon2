@@ -1,9 +1,6 @@
 <?php
-<<<<<<< HEAD
-=======
 $site_title = "KDØIOE Allstar";
 
->>>>>>> master-holder
 // Set title
 $var1 = explode('/', $_SERVER['REQUEST_URI']);
 $var2 = array_pop($var1);
@@ -34,12 +31,6 @@ if (!empty($var1[1])) {
 <meta name="author" content="Tim Sawyer, WD6AWP">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
-<<<<<<< HEAD
-<link type="text/css" rel="stylesheet" href="allmon.css">
-<link type="text/css" rel="stylesheet" href="jquery-ui.css">
-<script src="jquery-3.3.1.min.js"></script>
-<script src="jquery-ui.min.js"></script>
-=======
 <!--<link type="text/css" rel="stylesheet" href="allmon.css">-->
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -56,7 +47,6 @@ if (!empty($var1[1])) {
 
 <!--<script src="jquery-3.3.1.min.js"></script>
 <script src="jquery-ui.min.js"></script>-->
->>>>>>> master-holder
 <script type="text/javascript">
 // Was allmon.js
 // when DOM is ready
@@ -83,11 +73,7 @@ $(document).ready(function() {
 
     
     // Login dialog
-<<<<<<< HEAD
-    $("#login").dialog( {
-=======
     /* $("#login").dialog( {
->>>>>>> master-holder
         autoOpen: false,
         title: 'Manager Login',
         modal: true,
@@ -124,18 +110,11 @@ $(document).ready(function() {
      
     // Login dialog opener
     $("#loginlink").click(function() {
-<<<<<<< HEAD
-        $("#login").dialog('open');
-        return false;
-    });
-    
-=======
         //$("#login").dialog('open');
 		$("#loginModal").modal({show:true})
         return false;
     });
     */
->>>>>>> master-holder
     // Logout 
     $('#logoutlink').click(function(event) {
 	$.get("logout.php");
@@ -145,9 +124,6 @@ $(document).ready(function() {
         $('#logoutlink').hide();
         $('#connect_form').hide();
         event.preventDefault();
-<<<<<<< HEAD
-    });
-=======
     }); 
 
 	// IOE - Login function
@@ -171,7 +147,6 @@ $(document).ready(function() {
 	});
 
 
->>>>>>> master-holder
 
     // Ajax function a link
     $('#connect, #monitor, #permanent, #localmonitor, #disconnect').click(function() {
@@ -251,35 +226,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-<div id="header">
-<div id="headerTitle"><a href="<?php echo $home ?>">Allstar Monitor II</a></div>
-<div id="headerTag">
-Monitoring the World One Node at a Time
-</div>
-<!-- Login opener -->
-<div id="headerLogin">
-<a href="#" id="loginlink">Login</a>
-<a href="#" id="logoutlink">Logout</a>
-</div>
-<div id="headerImg"><img src="allstarLogo.png" alt="Allstar Logo"></div>
-</div>
-<div class="clearer"></div>
-<!-- Login form -->
-<div id="login">
-<div>
-<form method="post" action="">
-<table>
-<tr><td>Username:</td><td><input style="width: 150px;" type="text" name="user" autocapitalize="none"></td></tr>
-<tr><td>Password:</td><td><input style="width: 150px;" type="password" name="password"></td></tr>
-</table>
-</form>
-</div>
-</div>
-<?php include "menu.inc" ?>
-<!-- Command response area -->
-<div id="test_area"></div>
-=======
 <div class="container">
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
 <a class="navbar-brand" href="<?php echo $home ?>"><?php echo $site_title ?></a>
@@ -334,4 +280,3 @@ Monitoring the World One Node at a Time
 <div class="container">&nbsp;
 <div id="test_area"></div>
 </div>
->>>>>>> master-holder

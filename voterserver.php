@@ -122,17 +122,10 @@ function printNode($nodeNum, $nodes, $voted, $config) {
 	
     $info = getAstInfo($nodeNum);
     if (@$config['hideNodeURL'] == 1) {
-<<<<<<< HEAD
-        $message .= "<table class='rtcm'><tr><th colspan=2><i>Node $nodeNum - $info</i></th></tr>";
-    } else {
-        $nodeURL = "http://stats.allstarlink.org/nodeinfo.cgi?node=$nodeNum";
-        $message .= "<table class='rtcm'><tr><th colspan=2><i>Node <a href=\"$nodeURL\" target=\"_blank\">$nodeNum</a> - $info</i></th></tr>";
-=======
         $message .= "<table class='rtcm table table-sm table-bordered'><tr><th colspan=2>Node $nodeNum - $info</i></th></tr>";
     } else {
         $nodeURL = "http://stats.allstarlink.org/nodeinfo.cgi?node=$nodeNum";
         $message .= "<table class='rtcm table table-sm table-bordered'><tr><th colspan=2>Node <a href=\"$nodeURL\" target=\"_blank\">$nodeNum</a> - $info</i></th></tr>";
->>>>>>> master-holder
     }
     $message .= "<tr><th>Client</th><th>RSSI</th></tr>";
 
@@ -152,15 +145,6 @@ function printNode($nodeNum, $nodes, $voted, $config) {
 
         // find voted if any
         if (@$voted[$nodeNum] != 'none' && strstr($clientName, @$voted[$nodeNum])) {
-<<<<<<< HEAD
-                $barcolor = 'greenyellow';
-                $textcolor = 'black';
-        } elseif (strstr($clientName, 'Mix')) {
-            $barcolor = 'cyan';
-            $textcolor = 'black';
-        } else {
-            $barcolor = "#0099FF";
-=======
                 $barcolor = 'bg-success';
                 $textcolor = 'black';
         } elseif (strstr($clientName, 'Mix')) {
@@ -168,22 +152,15 @@ function printNode($nodeNum, $nodes, $voted, $config) {
             $textcolor = 'black';
         } else {
             $barcolor = "bg-primary";
->>>>>>> master-holder
             $textcolor = 'white';
         }
 
         // print table rows
         $message .= "<tr>";
 #        $message .= "<td><div style='width: 150px;'>$clientName</div></td>";
-<<<<<<< HEAD
-        $message .= "<td><div>$clientName</div></td>";
-        $message .= "<td><div class='text'>&nbsp;<div class='barbox_a'>";
-        $message .= "<div class='bar' style='width: " . $percent * 3 . "px; background-color: $barcolor; color: $textcolor'>$rssi</div>";
-=======
         $message .= "<td>$clientName</td>";
         $message .= "<td><div class=\"progress\" style=\"height: 20px\">";
         $message .= "<div class=\"progress-bar $barcolor\" style=\"width: $percent%\" role=\progressbar\" aria-valuenow=\"$percent\" aria-valuemin=\"0\" aria-valuemax=\"100\">$rssi</div>";
->>>>>>> master-holder
         $message .= "</div></td></tr>";
     }
 	$message .= "<tr><td colspan=2>&nbsp;</td></tr>";

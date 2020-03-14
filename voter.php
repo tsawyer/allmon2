@@ -32,19 +32,6 @@ if (empty($passedNodes[0])) {
     });            
 </script>
 <br/>
-<<<<<<< HEAD
-<?php foreach ($passedNodes as $node) { ?>
-<div id="link_list_<?php echo $node; ?>">Loading voter...</div>
-<?php } ?>
-<div style='width:500px; text-align:left;'>
-The numbers indicate the relative signal strength. The value ranges from 0 to 255, a range of approximately 30db.
-A value of zero means that no signal is being received. The color of the bars indicate the type of RTCM client.
-</div>
-<div style='width: 240px; text-align:left; position: relative; left: 160px;'>
-<div style='background-color: #0099FF; color: white; text-align: center;'>A blue bar indicates a voting station.</div>
-<div style='background-color: greenyellow; color: black; text-align: center;'>Green indicates the station is voted.</div>
-<div style='background-color: cyan; color: black; text-align: center;'>Cyan is a non-voting mix station. </div>
-=======
 
 <div class="row">
 <div class="col-sm-5">
@@ -77,6 +64,5 @@ A value of zero means that no signal is being received. The color of the bars in
 </p>
 
 </div>
->>>>>>> master-holder
 </div>
 <?php include "footer.inc"; ?>
