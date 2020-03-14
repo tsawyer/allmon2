@@ -1,4 +1,9 @@
 <?php
+<<<<<<< HEAD
+=======
+$site_title = "KDØIOE Allstar";
+
+>>>>>>> master-holder
 // Set title
 $var1 = explode('/', $_SERVER['REQUEST_URI']);
 $var2 = array_pop($var1);
@@ -29,10 +34,29 @@ if (!empty($var1[1])) {
 <meta name="author" content="Tim Sawyer, WD6AWP">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
+<<<<<<< HEAD
 <link type="text/css" rel="stylesheet" href="allmon.css">
 <link type="text/css" rel="stylesheet" href="jquery-ui.css">
 <script src="jquery-3.3.1.min.js"></script>
 <script src="jquery-ui.min.js"></script>
+=======
+<!--<link type="text/css" rel="stylesheet" href="allmon.css">-->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+
+
+<!--<script src="jquery-3.3.1.min.js"></script>
+<script src="jquery-ui.min.js"></script>-->
+>>>>>>> master-holder
 <script type="text/javascript">
 // Was allmon.js
 // when DOM is ready
@@ -59,7 +83,11 @@ $(document).ready(function() {
 
     
     // Login dialog
+<<<<<<< HEAD
     $("#login").dialog( {
+=======
+    /* $("#login").dialog( {
+>>>>>>> master-holder
         autoOpen: false,
         title: 'Manager Login',
         modal: true,
@@ -96,10 +124,18 @@ $(document).ready(function() {
      
     // Login dialog opener
     $("#loginlink").click(function() {
+<<<<<<< HEAD
         $("#login").dialog('open');
         return false;
     });
     
+=======
+        //$("#login").dialog('open');
+		$("#loginModal").modal({show:true})
+        return false;
+    });
+    */
+>>>>>>> master-holder
     // Logout 
     $('#logoutlink').click(function(event) {
 	$.get("logout.php");
@@ -109,7 +145,33 @@ $(document).ready(function() {
         $('#logoutlink').hide();
         $('#connect_form').hide();
         event.preventDefault();
+<<<<<<< HEAD
     });
+=======
+    }); 
+
+	// IOE - Login function
+	$("#loginForm").submit(function () {
+		event.preventDefault();
+		var user = $('form input:text').val();
+               var passwd = $('input:password').val();
+			   $("#loginModal").modal('hide');
+               //$(this).dialog("close"); 
+               $('#test_area').load("login.php", { 'user' : user, 'passwd' : passwd }, function(response) {
+                   if (response.substr(0,5) != 'Sorry') {
+                       $('#connect_form').show();
+                       $('#logoutlink').show();
+                       $('#loginlink').hide();
+                   }
+               });
+               $('#test_area').stop().css('opacity', 1).fadeIn(50).delay(1000).fadeOut(2000);
+		
+		
+		
+	});
+
+
+>>>>>>> master-holder
 
     // Ajax function a link
     $('#connect, #monitor, #permanent, #localmonitor, #disconnect').click(function() {
@@ -189,6 +251,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 <div id="header">
 <div id="headerTitle"><a href="<?php echo $home ?>">Allstar Monitor II</a></div>
 <div id="headerTag">
@@ -216,3 +279,59 @@ Monitoring the World One Node at a Time
 <?php include "menu.inc" ?>
 <!-- Command response area -->
 <div id="test_area"></div>
+=======
+<div class="container">
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+<a class="navbar-brand" href="<?php echo $home ?>"><?php echo $site_title ?></a>
+  
+
+<?php include "menu.inc" ?>
+
+<button type="button" class="btn btn-primary my-2 my-lg-0" data-toggle="modal" data-target="#loginModal" id="loginlink" >Login</button>
+<button type="button" class="btn btn-warning" id="logoutlink">Logout</button>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+
+
+
+
+
+
+
+
+<form method="post" action="" id="loginForm">
+<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document"> 
+	<div class="modal-content">
+	<div class="modal-header">
+		<h5>Authorized Users Only</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	</div>
+	<div class="modal-body">
+		<div class="form-group">
+			<label for="usernameInput">Username</label>
+			<input id="usernameInput" class="form-control" type="text" name="user" autocapitalize="none">
+		</div>
+		<div class="form-group">
+			<label for="passwordInput">Password</label>
+			<input id="passwordInput" class="form-control" type="password" name="password">
+		</div>
+	
+			
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary" id="loginButton">Login</button>
+	</div>
+	</div>
+	</div>
+</div>
+</form>
+
+<!-- Command response area -->
+<div class="container">&nbsp;
+<div id="test_area"></div>
+</div>
+>>>>>>> master-holder

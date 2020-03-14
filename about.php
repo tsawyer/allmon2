@@ -1,6 +1,7 @@
 <?php include "session.inc"; ?>
 <?php include "header.inc"; ?>
 <p>
+<img src="/allstarLogo.png"  />
 Allmon is a web site for monitoring and managing ham radio 
 <a href="http://allstarlink.org" target="_blank">Allstar</a> and <a href="http://ohnosec.org/drupal/" target="_blank">app_rpt</a>
 node linking and <a href="http://micro-node.com/thin-m1.html" target="_blank">RTCM clients</a>. 

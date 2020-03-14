@@ -1,6 +1,12 @@
 <?php include "session.inc"; ?>
 <?php include "header.inc"; ?>
+<<<<<<< HEAD
 <p>
+=======
+
+<p>
+<img src="allstarLogo.png" class="float-left" />
+>>>>>>> master-holder
 Allmon is a web site for monitoring and managing ham radio 
 <a href="http://allstarlink.org" target="_blank">Allstar</a> and <a href="http://ohnosec.org/drupal/" target="_blank">app_rpt</a>
 node linking and <a href="http://micro-node.com/thin-m1.html" target="_blank">RTCM clients</a>. 
@@ -29,6 +35,7 @@ The color of the bars indicate the type of RTCM client as shown on the key below
 </p>
 <p>Please feel free to <a href="https://github.com/tsawyer/allmon2">download Allmon2</a> for your own site. Enjoy!</p>
 
+<<<<<<< HEAD
 Version 2 changes:
 <ul>
 <li>Uses HTML 5 sever-sent events. SSE replaces JavaScript long poling to increase update frequency and reduce the load on Asterisk.
@@ -60,4 +67,6 @@ Version 2.1:
     <li>A click on the page title will fetch the Allmon index page.</li> 
     <li>The about page text has been moved to the index page.</li>
 </ul>
+=======
+>>>>>>> master-holder
 <?php include "footer.inc"; ?>
