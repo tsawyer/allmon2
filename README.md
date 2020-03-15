@@ -1,7 +1,7 @@
-# Allmon
+# Allmon2
 
 ## About
-Allmon is a web site for managing one or more app_rpt (aka Allstar) nodes.
+Allmon2 is a web site for managing one or more app_rpt (aka Allstar) nodes.
 Each managed local node shows a list of connected nodes. The list is
 sorted in reverse order of the most recently received node. So the last
 node to talk is always at the top of the list. Any node that is currently
@@ -18,11 +18,12 @@ will suffer.
 Logged in users can perform connect and disconnects. Users are maintained
 with the Apache htpasswd utility. There is only one login level, admin.
 
-Allmon will also monitor VOTER clients. Each VOTER instance displays a list
+Allmon2 will also monitor VOTER clients. Each VOTER instance displays a list
 attached Radio Thin Client Modules (RTCM). The RSSI for each RTCM is displayed
 in bar graph style along with a color to indicate the currently voted RTCM.
 
 ## Installation
+
 ### Prerequisities
 - Apache, including the **htpasswd** utility.
 - PHP 5.2 or above
@@ -32,20 +33,22 @@ If you installed your node(s) from the Allstar web portal and never touched the 
 
 The web server can be local to your node or on a stand alone server. If you are concerned about performance of your node use a stand alone server. Also, you will be able to view two or mode of your nodes (even if on separate app_rpt servers). The Asterisk Manager port 5038 (or another of your choosing) must be open towards your web server.
 
+### Basic Installation
+
 1. Put these files somewhere in your web servers document tree. That can be the docroot or any subdir you like.
 2. Copy allmon.ini.txt to allmon.ini.php and then edit it for your node(s) information. The user ID and passwords you enter here are the one you will
    use in manager.conf on your node server(s).
 3. Optionally copy voter.ini.txt to voter.ini.php and edit with your voter info.
 4. Create your .htpasswd file for the admin user(s). In your web server directory, on the command line execute:
-`htpasswd -c .htpasswd username`
+```htpasswd -c .htpasswd username```
 Some systems will need the -d option to force crypr() encryption needed by php
 5. Edit /etc/asterisk/manager.conf
 6. Mark astdb.php executable and add to cron. **Run just once a day please.**
-`01 03 * * * cd /var/www/html/allmon; ./astdb.php`
+```01 03 * * * cd /var/www/html/allmon2; ./astdb.php```
 7. If you have private nodes rename the privatenodes.sample.txt to privatenodes.txt and edit it with your information. The line with NODE|CALL|INFO|LOCATION can be removed. It's there to show the format only.
 8. Edit controlpanel.ini.php for your desired commands. Be sure to keep the labels[] and the cmds[] tags in assoicated pairs. 
 
-Allstar Database
+### Allstar Database
  - If you don't have the Allstar "database" (really just a text file) the
    Node Information column will only show the IP address of the remote nodes.
  - ACID and Limey users should run the astdb.php script to get an initial 
@@ -56,11 +59,11 @@ Allstar Database
    users should add a symbolic link to that file with 
    "ln -s /var/log/asterisk/astdb.txt astdb.txt".
 
-Known Bugs
+## Known Bugs
  - If you have only a group and no individual nodes displayed (menu=yes)
    index.php will not redirect to the group.
 
-Updates
+## Updates
   - 2012/12/06 Private nodes may be appended to astdb.txt
   - 2012/12/10 Fixed groups where more than one group is used
   - 2012/12/17 Menu items may be added to allmon.ini
