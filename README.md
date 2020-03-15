@@ -1,7 +1,7 @@
-Allmon README
-Updated Feburary 2, 2018
+# Allmon2
 
-Allmon is a web site for managing one or more app_rpt (aka Allstar) nodes.
+## About
+Allmon2 is a web site for managing one or more app_rpt (aka Allstar) nodes.
 Each managed local node shows a list of connected nodes. The list is
 sorted in reverse order of the most recently received node. So the last
 node to talk is always at the top of the list. Any node that is currently
@@ -18,53 +18,47 @@ will suffer.
 Logged in users can perform connect and disconnects. Users are maintained
 with the Apache htpasswd utility. There is only one login level, admin.
 
-Allmon will also monitor VOTER clients. Each VOTER instance displays a list
+Allmon2 will also monitor VOTER clients. Each VOTER instance displays a list
 attached Radio Thin Client Modules (RTCM). The RSSI for each RTCM is displayed
 in bar graph style along with a color to indicate the currently voted RTCM.
 
-Install instructions
- - If you installed your node(s) from the Allstar web portal and never
-   touched the command line, you have a fairly steep learning curve ahead
-   of you. On the other hand, if you know Apache and Linux then installation
-   should be a piece of cake.
- - Apache and PHP need to be installed on your server. The Apache password
-   utility htpasswd must be available if you want to install an administrator.
- - Allmon 2 requires PHP 5.2 or above. If you run Allmon or your ACID node or
-   your web server is RedHat 5 you will have to update your yum repo to get a
-   current enough php with 
-   wget -q -O - http://www.atomicorp.com/installers/atomic | sh
-   and then
-   yum update php
-   That should pring you up to php 5.4 as of this writing. Alternatively, 
-   the pecl json package may work but I’ve not tried it.
- - The web server can be local to your node or on a stand alone server. If you
-   are concerned about performance of your node use a stand alone server. Also,
-   you will be able to view two or mode of your nodes (even if on separate app_rpt
-   servers). The Asterisk Manager port 5038 (or another of your choosing) must
-   be open towards your web server.
- - Put these files somewhere in your web servers document tree. That can be
-   the docroot or any subdir you like.
- - Copy allmon.ini.txt to allmon.ini.php and then edit it for your node(s)
-   information. The user ID and passwords you enter here are the one you will
-   use in manager.conf on your node server(s).
- - Optionally copy voter.ini.txt to voter.ini.php and edit with your voter info.
- - Create your .htpasswd file for the admin user(s). In your web server
-   directory, on the command line do: htpasswd -c .htpasswd username
-   Some systems will need the -d option to force crypr() encryption 
-   needed by php
- - Make sure you have the latest Allstar source from svn as there are special
-   Allmon commands in later verions of rpt.c. 
- - Edit /etc/asterisk/manager.conf
- - Mark astdb.php executable and add to cron. Run just once a day please. ie
-   01 03 * * * cd /var/www/html/allmon; ./astdb.php
- - If you have private nodes rename the privatenodes.sample.txt to
-   privatenodes.txt and edit it with your information.
-   The line with NODE|CALL|INFO|LOCATION can be removed. It's there to show
-   the format only.
- - Edit controlpanel.ini.php for your desired commands. Be sure to keep the
-   labels[] and the cmds[] tags in assoicated pairs. 
+## Installation
 
-Allstar Database
+### Prerequisities
+- Apache, including the **htpasswd** utility.
+- PHP 5.2 or above
+- Latest version of Asterisk preferred for best functionality
+
+If you installed your node(s) from the Allstar web portal and never touched the command line, you have a fairly steep learning curve ahead of you. On the other hand, if you know Apache and Linux then installation should be a piece of cake.
+
+The web server can be local to your node or on a stand alone server. If you are concerned about performance of your node use a stand alone server. Also, you will be able to view two or mode of your nodes (even if on separate app_rpt servers). The Asterisk Manager port 5038 (or another of your choosing) must be open towards your web server.
+
+### Basic Installation
+
+1. Put these files somewhere in your web servers document tree. That can be the docroot or any subdir you like.
+2. Copy allmon.ini.txt to allmon.ini.php and then edit it for your node(s) information. The user ID and passwords you enter here are the one you will
+   use in manager.conf on your node server(s).
+3. Optionally copy voter.ini.txt to voter.ini.php and edit with your voter info.
+
+4. Modify **header.inc** and change the variable `$site_title` to whatever you would like.
+5. Create your .htpasswd file for the admin user(s). In your web server directory, on the command line execute:
+```
+htpasswd -c .htpasswd username
+```
+Some systems will need the -d option to force crypr() encryption needed by php
+
+6. Edit /etc/asterisk/manager.conf
+
+7. Mark astdb.php executable and add to cron. **Run just once a day please.**
+```
+01 03 * * * cd /var/www/html/allmon2; ./astdb.php
+```
+
+8. If you have private nodes rename the privatenodes.sample.txt to privatenodes.txt and edit it with your information. The line with `NODE|CALL|INFO|LOCATION` can be removed. It's there to show the format only.
+
+9. Edit controlpanel.ini.php for your desired commands. Be sure to keep the labels[] and the cmds[] tags in assoicated pairs. 
+
+### Allstar Database
  - If you don't have the Allstar "database" (really just a text file) the
    Node Information column will only show the IP address of the remote nodes.
  - ACID and Limey users should run the astdb.php script to get an initial 
@@ -73,13 +67,15 @@ Allstar Database
    once a day and manually run when you need the occasional adhoc update.
  - The Beagle Bone Black already has a daily updated astdb.txt file. BBB
    users should add a symbolic link to that file with 
-   "ln -s /var/log/asterisk/astdb.txt astdb.txt".
+   ```
+   ln -s /var/log/asterisk/astdb.txt astdb.txt
+   ```
 
-Known Bugs
+## Known Bugs
  - If you have only a group and no individual nodes displayed (menu=yes)
    index.php will not redirect to the group.
 
-Updates
+## Updates
   - 2012/12/06 Private nodes may be appended to astdb.txt
   - 2012/12/10 Fixed groups where more than one group is used
   - 2012/12/17 Menu items may be added to allmon.ini
@@ -151,3 +147,5 @@ Updates
   - 2018/02/05
     - Thanks to coolacid for the X-Accel-Buffering pr
     - Also added X-Accel-Buffering to voterserver.php
+  - 2020/03/15
+    - Created Bootstrap version/branch, migrated to jQuery 3.4.1 and removed jQuery-ui dependancy.

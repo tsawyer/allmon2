@@ -67,9 +67,9 @@ $(document).ready(function() {
         		
 	        			// Set green, red or no background color 
 	            		if (tabledata[localNode].remote_nodes[row].keyed == 'yes') {
-		            		tablehtml += '<tr class="rColor">';
+		            		tablehtml += '<tr class="table-danger">';
 	            		} else if (tabledata[localNode].remote_nodes[row].mode == 'C') {
-		            		tablehtml += '<tr class="cColor">';
+		            		tablehtml += '<tr class="table-primary">';
 	            		} else {
 		            		tablehtml += '<tr>';
 	            		}
@@ -142,41 +142,53 @@ $(document).ready(function() {
     } else {
         $("#list_link").html("Sorry, your browser does not support server-sent events...");
     }
+	
+	
 });
 </script>
-<br/>
+
+
 <!-- Connect form -->
-<div id="connect_form">
+<div class="container">
+<div id="connect_form" class="form-inline">
 <?php 
 if (count($nodes) > 0) {
     if (count($nodes) > 1) {
-        print "<select id=\"localnode\">";
+        print "<select id=\"localnode\" class=\"form-control mb-2 mr-sm-2\">";
         foreach ($nodes as $node) {
 		if (isset($astdb[$node]))
 			$info = $astdb[$node][1] . ' ' . $astdb[$node][2] . ' ' . $astdb[$node][3];
 		else
 			$info = "Node not in database";
-            print "<option value=\"$node\">$node - $info</option>";
+            print "<option value=\"$node\">$node</option>";
         }
         print "</select>\n";
     } else {
         print "<input type=\"hidden\" id=\"localnode\" value=\"{$nodes[0]}\">\n";
     }
 ?>
-<input type="text" id="node">
-Permanent <input type="checkbox"><br/>
-<input type="button" value="Connect" id="connect">
-<input type="button" value="Disconnect" id="disconnect">
-<input type="button" value="Monitor" id="monitor">
-<input type="button" value="Local Monitor" id="localmonitor">
-<input type="button" value="Control Panel" id="controlpanel">
+
+
+<input type="text" class="form-control mb-2 mr-sm-2" id="node">
+
+<div class="form-check form-check-inline mb-2 mr-sm-2">
+<input class="form-check-input" type="checkbox">
+<label for="permanentCheckbox" class="form-check-label">Permanent</label>
+</div>
+
+<input type="button" class="form-control btn btn-success mb-2 mr-sm-2" value="Connect" id="connect">
+<input type="button" class="form-control btn btn-danger mb-2 mr-sm-2" value="Disconnect" id="disconnect">
+<input type="button" class="form-control btn btn-primary mb-2 mr-sm-2" value="Monitor" id="monitor">
+<input type="button" class="form-control btn btn-info mb-2 mr-sm-2" value="Local Monitor" id="localmonitor">
+<input type="button" class="form-control btn btn-secondary mb-2 mr-sm-2" value="Control Panel" id="controlpanel">
 <?php
 } #endif (count($nodes) > 0)
 ?>
 </div>
+</div>
 
 <!-- Nodes table -->
-<div>
+<div class="container">
 <?php
 #print '<pre>'; print_r($nodes); print '</pre>';
 foreach($nodes as $node) {
@@ -191,32 +203,59 @@ foreach($nodes as $node) {
     } else {
         $nodeURL = "http://stats.allstarlink.org/nodeinfo.cgi?node=$node";
         $bubbleChart = "http://stats.allstarlink.org/getstatus.cgi?$node";
-    	$title = "Node <a href=\"$nodeURL\" target=\"_blank\">$node</a> - $info ";
-    	$title .= "<a href=\"$bubbleChart\" target=\"_blank\" id=\"bubblechart\">Bubble Chart</a>";
+    	$title = "Node $node - $info ";
+    	$title .= "<div class=\"btn-group float-right\">";
+		$title .= "<a href=\"$nodeURL\" class=\"btn btn-info\" target=\"_blank\">Node Info</a>";
+		$title .= "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#nodeBubbleModal_$node\">Bubble Chart</button>";
+		$title .= "</div>";
+		
+		
     }
 ?>
-	<table class=gridtable id="table_<?php echo $node ?>">
-	<colgroup>
-       <col span="1" style="width: 50px;">
-       <col span="1" style="width: 300px;">
-       <col span="1" style="width: 80px;">
-       <col span="1" style="width: 100px;">
-       <col span="1" style="width: 70px;">
-       <col span="1" style="width: 80px;">
-       <col span="1" style="width: 90px;">
-    </colgroup>
+
+	<div class="table-responsive-lg">
+	<h3><?php echo $title; ?></h3>
+	<table class="table table-sm table-bordered table-hover" id="table_<?php echo $node ?>">
 	<thead>
-	<tr style="font-size:20px"><th colspan="7"><i><?php echo $title; ?></i></th></tr>
+	<!--<tr style="font-size:20px"><th colspan="7"><?php echo $title; ?></th></tr>-->
 	<tr><th>Node</th><th>Node Information</th><th>Received</th><th>Link</th><th>Direction</th><th>Connected</th><th>Mode</th></tr>
 	</thead>
 	<tbody>
 	<tr><td colspan="7">Waiting...</td></tr>
 	</tbody>
-	</table><br />
+	</table>
+	</div>
+	<div class="modal fade" id="nodeBubbleModal_<?php echo $node ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Node <?php echo $node ?> Chart</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <a href="<?php echo $bubbleChart ?>" id="zoomImage" target="_blank" ><img src="<?php echo $bubbleChart ?>" class="img-fluid" /></a>
+
+	  </div>
+      <div class="modal-footer">
+        <small>Click the chart to open in a new window.</small><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+
 <?php
 }
 ?>
 </div>
+
+<!-- Modal -->
+
+
 <div id="blinky">
 </div>
 <?php include "footer.inc"; ?>

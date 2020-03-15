@@ -31,9 +31,11 @@ foreach($config as $name => $data) {
         $sysName=$data['system'];
     }
     
+	$systems[$sysName][$name]['target'] = "";
     // URL: Use 'url', 'rtcmnode', 'nodes', or name
     if (isset($data['url'])) {
         $systems[$sysName][$name]['url'] = $data['url'];
+		$systems[$sysName][$name]['target'] = "_blank";
     } elseif(isset($data['rtcmnode'])) {
         $systems[$sysName][$name]['url'] = "voter.php?node={$data['rtcmnode']}";
     } elseif (isset($data['nodes'])) {
@@ -45,31 +47,31 @@ foreach($config as $name => $data) {
 //print '<pre>'; print_r($systems); print '</pre>';
 
 // Output menu 
-$outBuf = "<div id=\"menu\">\n";
-$outBuf .= "<ul>";
+$outBuf = "<div id=\"navbarNav\" class=\"navbar-collapse collapse\">\n";
+$outBuf .= "<ul class=\"navbar-nav mr-auto\">";
 foreach ($systems as $sysName => $items) {
     if ($sysName == "MainNavBar") {
         // $itemName = key($items);
         // $url =  $items[$itemName]['url'];
         // $outBuf .= "<li><a href=\"$url\">$itemName</a></li>\n";
-        $outBuf .= "<li>";
+        //$outBuf .= "<li class=\"nav-item\">";
         foreach($items as $itemName => $itemValue) {
-            $outBuf .= "  <a href=\"" . $itemValue['url'] .  "\">$itemName</a>";
+            $outBuf .= "<li class=\"nav-item\">\n<a class=\"nav-link\" href=\"" . $itemValue['url'] .  "\" target=\"" . $itemValue['target'] . "\">$itemName</a>\n</li>\n";
         }
-        $outBuf .= "</li>";
+        //$outBuf .= "</li>";
     } else {
-        $outBuf .= "<li class=\"dropdown\">\n";
-        $outBuf .= "<a href=\"#\" class=\"dropbtn\">$sysName</a>\n";
-        $outBuf .= "<div class=\"dropdown-content\">\n";
+        $outBuf .= "<li class=\"dropdown nav-item\">\n";
+        $outBuf .= "<a href=\"#\" class=\"nav-link dropdown-toggle\">$sysName</a>\n";
+        $outBuf .= "<div class=\"dropdown-menu\">\n";
         foreach($items as $itemName => $itemValue) {
-            $outBuf .= "  <a href=\"" . $itemValue['url'] .  "\">$itemName</a>\n";
+            $outBuf .= "  <a class=\"dropdown-item\" href=\"" . $itemValue['url'] .  "\">$itemName</a>\n";
         }
         $outBuf .= "</div>\n</li>\n";
     }
 }
 
 $outBuf .= "</ul>\n</div>\n";
-$outBuf .= "<div class=\"clearer\"></div>";
+//$outBuf .= "<div class=\"clearer\"></div>";
 print $outBuf;
 
 //print '<pre>'; print_r($outBuf); print '</pre>';
