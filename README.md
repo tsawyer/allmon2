@@ -39,22 +39,24 @@ The web server can be local to your node or on a stand alone server. If you are 
 2. Copy allmon.ini.txt to allmon.ini.php and then edit it for your node(s) information. The user ID and passwords you enter here are the one you will
    use in manager.conf on your node server(s).
 3. Optionally copy voter.ini.txt to voter.ini.php and edit with your voter info.
-4. Create your .htpasswd file for the admin user(s). In your web server directory, on the command line execute:
+
+4. Modify **header.inc** and change the variable `$site_title` to whatever you would like.
+5. Create your .htpasswd file for the admin user(s). In your web server directory, on the command line execute:
 ```
 htpasswd -c .htpasswd username
 ```
 Some systems will need the -d option to force crypr() encryption needed by php
 
-5. Edit /etc/asterisk/manager.conf
+6. Edit /etc/asterisk/manager.conf
 
-6. Mark astdb.php executable and add to cron. **Run just once a day please.**
+7. Mark astdb.php executable and add to cron. **Run just once a day please.**
 ```
 01 03 * * * cd /var/www/html/allmon2; ./astdb.php
 ```
 
-7. If you have private nodes rename the privatenodes.sample.txt to privatenodes.txt and edit it with your information. The line with NODE|CALL|INFO|LOCATION can be removed. It's there to show the format only.
+8. If you have private nodes rename the privatenodes.sample.txt to privatenodes.txt and edit it with your information. The line with `NODE|CALL|INFO|LOCATION` can be removed. It's there to show the format only.
 
-8. Edit controlpanel.ini.php for your desired commands. Be sure to keep the labels[] and the cmds[] tags in assoicated pairs. 
+9. Edit controlpanel.ini.php for your desired commands. Be sure to keep the labels[] and the cmds[] tags in assoicated pairs. 
 
 ### Allstar Database
  - If you don't have the Allstar "database" (really just a text file) the
@@ -145,3 +147,5 @@ Some systems will need the -d option to force crypr() encryption needed by php
   - 2018/02/05
     - Thanks to coolacid for the X-Accel-Buffering pr
     - Also added X-Accel-Buffering to voterserver.php
+  - 2020/03/15
+    - Created Bootstrap version/branch, migrated to jQuery 3.4.1 and removed jQuery-ui dependancy.
