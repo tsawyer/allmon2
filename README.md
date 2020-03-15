@@ -44,12 +44,16 @@ The web server can be local to your node or on a stand alone server. If you are 
 htpasswd -c .htpasswd username
 ```
 Some systems will need the -d option to force crypr() encryption needed by php
+
 5. Edit /etc/asterisk/manager.conf
+
 6. Mark astdb.php executable and add to cron. **Run just once a day please.**
 ```
 01 03 * * * cd /var/www/html/allmon2; ./astdb.php
 ```
+
 7. If you have private nodes rename the privatenodes.sample.txt to privatenodes.txt and edit it with your information. The line with NODE|CALL|INFO|LOCATION can be removed. It's there to show the format only.
+
 8. Edit controlpanel.ini.php for your desired commands. Be sure to keep the labels[] and the cmds[] tags in assoicated pairs. 
 
 ### Allstar Database
