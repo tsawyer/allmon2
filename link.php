@@ -143,7 +143,7 @@ $(document).ready(function() {
         $("#list_link").html("Sorry, your browser does not support server-sent events...");
     }
 	
-	$("#zoomImage").zoom({ url: "http://stats.allstarlink.org/getstatus.cgi?49973" });
+	
 });
 </script>
 

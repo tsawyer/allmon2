@@ -31,8 +31,8 @@ if (!empty($var1[1])) {
 <meta name="author" content="Tim Sawyer, WD6AWP">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
-<!--<link type="text/css" rel="stylesheet" href="allmon.css">-->
 
+<!--
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -42,11 +42,12 @@ if (!empty($var1[1])) {
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
+-->
 
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
-
-<!--<script src="jquery-3.3.1.min.js"></script>
-<script src="jquery-ui.min.js"></script>-->
 <script type="text/javascript">
 // Was allmon.js
 // when DOM is ready
