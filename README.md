@@ -40,11 +40,15 @@ The web server can be local to your node or on a stand alone server. If you are 
    use in manager.conf on your node server(s).
 3. Optionally copy voter.ini.txt to voter.ini.php and edit with your voter info.
 4. Create your .htpasswd file for the admin user(s). In your web server directory, on the command line execute:
-```htpasswd -c .htpasswd username```
+```
+htpasswd -c .htpasswd username
+```
 Some systems will need the -d option to force crypr() encryption needed by php
 5. Edit /etc/asterisk/manager.conf
 6. Mark astdb.php executable and add to cron. **Run just once a day please.**
-```01 03 * * * cd /var/www/html/allmon2; ./astdb.php```
+```
+01 03 * * * cd /var/www/html/allmon2; ./astdb.php
+```
 7. If you have private nodes rename the privatenodes.sample.txt to privatenodes.txt and edit it with your information. The line with NODE|CALL|INFO|LOCATION can be removed. It's there to show the format only.
 8. Edit controlpanel.ini.php for your desired commands. Be sure to keep the labels[] and the cmds[] tags in assoicated pairs. 
 
@@ -57,7 +61,9 @@ Some systems will need the -d option to force crypr() encryption needed by php
    once a day and manually run when you need the occasional adhoc update.
  - The Beagle Bone Black already has a daily updated astdb.txt file. BBB
    users should add a symbolic link to that file with 
-   "ln -s /var/log/asterisk/astdb.txt astdb.txt".
+   ```
+   ln -s /var/log/asterisk/astdb.txt astdb.txt
+   ```
 
 ## Known Bugs
  - If you have only a group and no individual nodes displayed (menu=yes)
