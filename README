@@ -56,7 +56,7 @@ Install instructions
    Allmon commands in later verions of rpt.c. 
  - Edit /etc/asterisk/manager.conf
  - Mark astdb.php executable and add to cron. Run just once a day please. ie
-   01 03 * * * cd /var/www/html/allmon; ./astdb.php
+   01 03 * * * cd /var/www/html/allmon2; ./astdb.php
  - If you have private nodes rename the privatenodes.sample.txt to
    privatenodes.txt and edit it with your information.
    The line with NODE|CALL|INFO|LOCATION can be removed. It's there to show
