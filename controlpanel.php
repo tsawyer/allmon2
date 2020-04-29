@@ -1,11 +1,12 @@
 <?php
 include ("session.inc");
+echo "<body style='background-color: black;color:white'>";
 $node = @trim(strip_tags($_GET['node']));
 if (!is_numeric($node)) {
     die ("Please provide a properly formated URI. (ie controlpanel.php?node=1234)");
 }
 
-$title = "Allmon Node $node Control Panel";
+$title = "Allstar Node $node Control Panel";
     
 if ($_SESSION['loggedin'] === true) {
     // Read allmon INI file

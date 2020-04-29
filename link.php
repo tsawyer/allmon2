@@ -143,9 +143,12 @@ $(document).ready(function() {
         $("#list_link").html("Sorry, your browser does not support server-sent events...");
     }
 	
-	
+	$("#zoomImage").zoom({ url: "http://stats.allstarlink.org/getstatus.cgi?49973" });
 });
 </script>
+
+
+
 
 
 <!-- Connect form -->
@@ -181,6 +184,7 @@ if (count($nodes) > 0) {
 <input type="button" class="form-control btn btn-primary mb-2 mr-sm-2" value="Monitor" id="monitor">
 <input type="button" class="form-control btn btn-info mb-2 mr-sm-2" value="Local Monitor" id="localmonitor">
 <input type="button" class="form-control btn btn-secondary mb-2 mr-sm-2" value="Control Panel" id="controlpanel">
+
 <?php
 } #endif (count($nodes) > 0)
 ?>
@@ -215,7 +219,7 @@ foreach($nodes as $node) {
 
 	<div class="table-responsive-lg">
 	<h3><?php echo $title; ?></h3>
-	<table class="table table-sm table-bordered table-hover" id="table_<?php echo $node ?>">
+	<table class="table table-sm table-bordered table-hover" style="background-color:black;color:white" id="table_<?php echo $node ?>">
 	<thead>
 	<!--<tr style="font-size:20px"><th colspan="7"><?php echo $title; ?></th></tr>-->
 	<tr><th>Node</th><th>Node Information</th><th>Received</th><th>Link</th><th>Direction</th><th>Connected</th><th>Mode</th></tr>
@@ -258,4 +262,6 @@ foreach($nodes as $node) {
 
 <div id="blinky">
 </div>
+
+
 <?php include "footer.inc"; ?>
