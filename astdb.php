@@ -24,7 +24,7 @@
    - Minor edits to messages
  */
 
-$dir = "/var/www/html/allmon2/";
+$dir = getcwd() . "/";
 $db = $dir . "astdb.txt";
 $privatefile = $dir . "privatenodes.txt";
 
