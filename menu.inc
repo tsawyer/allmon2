@@ -61,7 +61,7 @@ foreach ($systems as $sysName => $items) {
         //$outBuf .= "</li>";
     } else {
         $outBuf .= "<li class=\"dropdown nav-item\">\n";
-        $outBuf .= "<a href=\"#\" class=\"nav-link dropdown-toggle\">$sysName</a>\n";
+        $outBuf .= "<a href=\"#\" class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\">$sysName</a>\n";
         $outBuf .= "<div class=\"dropdown-menu\">\n";
         foreach($items as $itemName => $itemValue) {
             $outBuf .= "  <a class=\"dropdown-item\" href=\"" . $itemValue['url'] .  "\">$itemName</a>\n";
