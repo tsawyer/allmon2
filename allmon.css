@@ -156,23 +156,28 @@
 }
 
 #footer {
+	color:white;
     font-size:10px;
 }
 
 table.rtcm {
+	color:white;
    border-collapse:collapse;
    border:1px solid black;
    font-family:verdana,arial,sans-serif;
 }
 table.rtcm tr {
+	color:white;
 	font-size:12px;
 }
 
 table.rtcm td {
+	color:white;
 	white-space:nowrap;
 }
 
 table.rtcm th {
+	color:white;
     border:1px solid black;
 	font-size:13px;
 	background-color: #dedede;
@@ -181,7 +186,7 @@ table.rtcm th {
 table.gridtable {
 	font-family: verdana,arial,sans-serif;
 	font-size:11px;
-	color:#333333;
+	color:white;
 	border-width: 1px;
 	border-color: #666666;
 	border-collapse: collapse;
@@ -192,9 +197,11 @@ table.gridtable th {
 	padding: 4px;
 	border-style: solid;
 	border-color: #666666;
-	background-color: #dedede;
+	background-color: #000000;
+	color:white;
 }
 table.gridtable td {
+	color:white;
 	border-width: 1px;
 	padding: 4px;
 	border-style: solid;
@@ -203,11 +210,13 @@ table.gridtable td {
 }
 
 table.gridtable tr.rColor td {
-      background-color: #8BA51A; color: white;
+      background-color: #8BA51A;
+	  color: white;
 }
 
 table.gridtable tr.cColor td {
-      background-color: #FF9900; color: white;
+      background-color: #FF9900;
+	  color: white;
 }
 
 .disconnect {
@@ -221,6 +230,7 @@ table.gridtable tr.cColor td {
   width: 330px;
   font-size: 14px;
   text-align: left;
+  color:white
 }
 .barbox_a {
   position: absolute;
@@ -229,6 +239,7 @@ table.gridtable tr.cColor td {
   margin: 0px 0px 0px 0px;
   width: 302px;
   height: 22px;
+	color:white;
   background-color: black;
 }
 .bar {
@@ -238,7 +249,7 @@ table.gridtable tr.cColor td {
   margin: 0px 0px 0px 0px;
   width: 0px;
   height: 20px;
-  background-color: #0099FF;
+  background-color: black;
   text-align: center;
   color: white;
 }
@@ -250,7 +261,7 @@ table.gridtable tr.cColor td {
   left: 50%;
   height: 20px;
   margin: 0px 0px 0px 0px;
-  background-color: #0099FF;
+  background-color: black;
   color: white;
 }
 
@@ -273,7 +284,7 @@ table.gridtable tr.cColor td {
     top: 0px;
     right: 0px;
     display: block;
-    background: #2a2a2a;
+    background: black;
     padding: 5px 15px 5px 15px;
     color: #FFF;
 }
@@ -283,7 +294,7 @@ table.gridtable tr.cColor td {
     right: 0px;
     width: 200px;
     padding: 10px 15px 5px 15px;
-    background: #2a2a2a;
+    background: black;
     font-size: 8pt;
     font-weight: bold;
     color: #FFF;

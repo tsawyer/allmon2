@@ -1,12 +1,12 @@
-<?php
-$site_title = "KDØIOE Allstar";
-
+<?php include global.inc ;>
+$site_title = "$CALL $TITLE";
+echo "<body style='background-color: $BACKGROUND_COLOR; color: $FONT_COLOR'>";
 // Set title
 $var1 = explode('/', $_SERVER['REQUEST_URI']);
 $var2 = array_pop($var1);
 $uri = urldecode($var2);
 #$uri = urldecode(array_pop(explode('/', $_SERVER['REQUEST_URI'])));
-$pageTitle = strtoupper($_SERVER['SERVER_NAME']) . " | Allmon | "; 
+$pageTitle = strtoupper($_SERVER['SERVER_NAME']) . " | Allmon2 | "; 
 if (preg_match("/voter\.php\?node=(\d+)$/", $uri, $matches)) {
     $pageTitle .= "RTCM " . $matches[1];
 } elseif (preg_match("/link\.php\?nodes=(.+)$/", $uri, $matches)) {
@@ -31,23 +31,32 @@ if (!empty($var1[1])) {
 <meta name="author" content="Tim Sawyer, WD6AWP">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
+<link type="text/css" rel="stylesheet" href="allmon.css">
 
-<!--
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script
+  src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/popper.min.js"></script>
+
+
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
 
--->
 
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
 
+
+<!--<script src="jquery-3.3.1.min.js"></script>
+<script src="jquery-ui.min.js"></script>-->
 <script type="text/javascript">
 // Was allmon.js
 // when DOM is ready
@@ -230,10 +239,14 @@ $(document).ready(function() {
 <div class="container">
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
 <a class="navbar-brand" href="<?php echo $home ?>"><?php echo $site_title ?></a>
-  
+
 
 <?php include "menu.inc" ?>
-
+<!-- ******************************************************* -->
+<!-- This is where you need to paste the Time widget code -->
+<iframe src="https://freesecure.timeanddate.com/clock/i78xj6dm/fn6/fs16/fcfff/tct/pct/ftb/pa8/tt0/tw1/th1/ta1/tb4" frameborder="0" width="208" height="52" allowTransparency="true"></iframe>
+<!-- This is where you need to paste the Time widget code -->
+<!-- ******************************************************* -->
 <button type="button" class="btn btn-primary my-2 my-lg-0" data-toggle="modal" data-target="#loginModal" id="loginlink" >Login</button>
 <button type="button" class="btn btn-warning" id="logoutlink">Logout</button>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -241,9 +254,15 @@ $(document).ready(function() {
   </button>
 </nav>
 
+<!-- ******************************************************* -->
+<!-- This is where you need to paste the Weather widget code -->
+<a class="weatherwidget-io" href="https://forecast7.com/en/30d27n97d74/austin/?unit=us" data-label_1="AUSTIN" data-label_2="WEATHER" data-font="Times New Roman" data-icons="Climacons Animated" data-theme="dark" data-suncolor="#fff700" >AUSTIN WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
 
-
-
+<!-- This is where you need to paste the Weather widget code -->
+<!-- ******************************************************* -->
 
 
 
@@ -252,7 +271,7 @@ $(document).ready(function() {
 <form method="post" action="" id="loginForm">
 <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-dialog-centered" role="document"> 
-	<div class="modal-content">
+	<div class="modal-content" style="background-color:#333333;color:white">
 	<div class="modal-header">
 		<h5>Authorized Users Only</h5>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -260,11 +279,11 @@ $(document).ready(function() {
 	<div class="modal-body">
 		<div class="form-group">
 			<label for="usernameInput">Username</label>
-			<input id="usernameInput" class="form-control" type="text" name="user" autocapitalize="none">
+			<input id="usernameInput" class="form-control" type="text" name="user" autocapitalize="none" style="background-color:#333333;color:white">
 		</div>
 		<div class="form-group">
 			<label for="passwordInput">Password</label>
-			<input id="passwordInput" class="form-control" type="password" name="password">
+			<input id="passwordInput" class="form-control" type="password" name="password" style="background-color:#333333;color:white">
 		</div>
 	
 			
